@@ -17,7 +17,7 @@ export const NewTask: React.FC = () => {
         const description = document.getElementById('description')?.value;
         const status = document.getElementById('status')?.value;
         const priority = document.getElementById('priority')?.value;
-        
+
         const taskData = CreateTaskSchema.parse({ title, description, status, priority })
         await createTask(taskData)
     }

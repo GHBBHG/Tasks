@@ -1,7 +1,7 @@
 import { DeleteTaskButton } from "../TaskButtons/DeleteTaskButton";
 import { ProgressTaskButton } from "../TaskButtons/ProgressTaskButton";
 
-export function Card (props: any) {
+export function Card (props) {
     const classNameHeader = props.colorHeader + " p-1 rounded-2xl font-medium ";
     
     return (

@@ -1,6 +1,6 @@
 import { useTasks } from "../../hooks/useTasks";
 
-export function ProgressTaskButton (props: any) {
+export function ProgressTaskButton (props) {
     const { updateTask } = useTasks()
 
     const handleUpdate = (id: string, status: string) => {
