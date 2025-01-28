@@ -1,9 +1,13 @@
 import { useTasks } from "../../hooks/useTasks";
 
-export function ProgressTaskButton (props) {
-    const { updateTask } = useTasks()
+interface ProgressTaskButtonProps {
+    id: string,
+    status: string,
+}
 
-    const handleUpdate = (id: string, status: string) => {
+export function ProgressTaskButton ({id, status}: ProgressTaskButtonProps) {
+    const { updateTask } = useTasks()
+    const handleUpdate = () => {
         if (status === "todo") 
             updateTask(id, { status: "doing" })
         else if (status === "doing") 
@@ -12,14 +16,14 @@ export function ProgressTaskButton (props) {
 
     return (
         <div className="m-2">
-            {props.status === "todo" ? 
-                <button className="bg-sky-600 p-2 rounded-lg hover:bg-sky-700 mb-2" onClick={() => handleUpdate(props.id, props.status)}>
+            {status === "todo" ? 
+                <button className="bg-sky-600 p-2 rounded-lg hover:bg-sky-700 mb-2" onClick={handleUpdate}>
                 Iniciar
                 </button> :
-                <button className="bg-green-600 p-2 rounded-lg hover:bg-green-700 mb-2" onClick={() => handleUpdate(props.id, props.status)}>
+                <button className="bg-green-600 p-2 rounded-lg hover:bg-green-700 mb-2" onClick={handleUpdate}>
                 Concluir
-                </button>}
-            
+                </button>
+            }
         </div>
     );
 }

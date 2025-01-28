@@ -1,15 +1,18 @@
 import { useTasks } from "../../hooks/useTasks";
 
-export function DeleteTaskButton (props) {
+interface DeleteTaskButtonProps {
+    id: string;
+}
+
+export function DeleteTaskButton ({id}: DeleteTaskButtonProps) {
     const { deleteTask } = useTasks()
-    
-    const handleDelete = (id: string) => {
+    const handleDelete = () => {
         deleteTask(id)
     }
 
     return (
         <div className="m-2">
-            <button className="bg-red-600 p-2 rounded-lg hover:bg-red-700 mb-2" onClick={() => {handleDelete(props.id)}}>
+            <button className="bg-red-600 p-2 rounded-lg hover:bg-red-700 mb-2" onClick={handleDelete}>
                 Excluir
             </button>
         </div>

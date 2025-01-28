@@ -1,13 +1,23 @@
 import { DeleteTaskButton } from "../TaskButtons/DeleteTaskButton";
 import { ProgressTaskButton } from "../TaskButtons/ProgressTaskButton";
 
-export function Card (props) {
-    const classNameHeader = props.colorHeader + " p-1 rounded-2xl font-medium ";
-    
+interface CardProps {
+    colorHeader: string,
+    nameTask: string,
+    tasks: {
+        description:string,
+        id: string,
+        priority: string,
+        status: string,
+        title: string
+    }[]
+}
+
+export function Card ({ colorHeader, nameTask, tasks }: CardProps) {
     return (
         <div className='mx-auto w-[31%] text-start items-center rounded-xl'>
-                <p className={classNameHeader}>{props.nameTask}</p>
-                {props.tasks.map(task => (
+                <p className={`${colorHeader} p-1 rounded-2xl font-medium`}>{nameTask}</p>
+                {tasks.map(task => (
                     <div className='text-center rounded-lg mt-3 bg-sky-950 text-slate-100'>
                         <div className="flex text-start p-1 pl-2 pr-4 rounded-t-lg font-medium bg-gray-800 justify-between">
                             <div>{task.title}</div>
