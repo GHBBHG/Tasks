@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 img {
-    width: 150px;
-    height: 150px;
+  width: 150px;
+  height: 150px;
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
