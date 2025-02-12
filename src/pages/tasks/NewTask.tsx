@@ -6,7 +6,7 @@ const CreateTaskSchema = z.object({
   title: z.string(),
   description: z.string(),
   status: z.enum(["todo", "doing", "done"]),
-  priority: z.enum(["low", "medium", "high"]),
+  priority: z.enum(["baixa", "media", "alta"]),
 });
 
 export const NewTask: React.FC = () => {
@@ -20,7 +20,7 @@ export const NewTask: React.FC = () => {
   });
 
   const handleChangeInput = (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLSelectElement>,
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((current) => ({
@@ -37,12 +37,12 @@ export const NewTask: React.FC = () => {
 
   return (
     <div className="bg-zinc-900">
-      <div className="text-start m-5 p-4">
+      <div className="text-start m-5 mt-0 p-4 pt-0">
         <form onSubmit={handleSubmit}>
           <label className="text-white font-medium">Título</label>
           <br></br>
           <textarea
-            className="border-2 p-1 w-full h-10 bg-gray-700 rounded-3xl text-white"
+            className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
             name="title"
             onChange={handleChangeInput}
             required
@@ -51,7 +51,7 @@ export const NewTask: React.FC = () => {
           <label className="text-white font-medium">Descrição</label>
           <br></br>
           <textarea
-            className="border-2 p-1 w-full h-10 bg-gray-700 rounded-3xl text-white"
+            className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
             name="description"
             onChange={handleChangeInput}
             required
@@ -62,7 +62,7 @@ export const NewTask: React.FC = () => {
           <select
             name="status"
             onChange={handleChangeInput}
-            className="border-2 p-1 w-full h-10 bg-gray-700 rounded-3xl text-white"
+            className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
             required
           >
             <option label=""></option>
@@ -76,19 +76,19 @@ export const NewTask: React.FC = () => {
           <select
             name="priority"
             onChange={handleChangeInput}
-            className="border-2 p-1 w-full h-10 bg-gray-700 rounded-3xl text-white"
+            className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
             required
           >
             <option label=""></option>
-            <option label="baixa">low</option>
-            <option label="media">medium</option>
-            <option label="alta">high</option>
+            <option label="baixa">baixa</option>
+            <option label="media">media</option>
+            <option label="alta">alta</option>
           </select>
           <br></br>
           <br></br>
           <div className="text-end">
             <button
-              className="border-2 rounded-md p-[4px] mr-4 text-white"
+              className="border-2 rounded-md px-4 py-1 mr-4 text-white"
               type="submit"
             >
               Salvar

@@ -1,25 +1,39 @@
 {
   "tasks": [
     {
-      "id": "0d65",
-      "title": "dsafsdf",
-      "description": "sadfsdfsda",
-      "status": "doing",
-      "priority": "medium"
-    },
-    {
-      "id": "0d82",
-      "title": "sadfsdfa",
-      "description": "dfasdfsdf",
+      "id": "50a6",
+      "title": "ALTERAR DESIGN DO INPUT DE SEARCH",
+      "description": "Pesquisar modelo moderno no estilo do design (minimalista)\n-\nfeat/PED-209",
       "status": "done",
-      "priority": "high"
+      "priority": "media"
     },
     {
-      "id": "960e",
-      "title": "uyuytuty",
-      "description": "rttyutruytrutuyrtu",
+      "id": "9427",
+      "title": "ADICIONAR ESTOQUE NO PRODUTO",
+      "description": "Adicionar valor no card de produto, e mensagem de ultimas unidades se estoque < 10\n-\nfeat/PED-206",
+      "status": "done",
+      "priority": "alta"
+    },
+    {
+      "id": "fc6e",
+      "title": "ESTRUTURAR DADOS NOVOS DO SITE VEPLEX",
+      "description": "Esperar o lucas mandar os dados novos e estruturar da melhor forma\nBranch: ajustes-gabriel",
       "status": "todo",
-      "priority": "low"
+      "priority": "alta"
+    },
+    {
+      "id": "971b",
+      "title": "TASKS - ATUALIZAR PROJETO",
+      "description": "Atualizar todos os documentos dentro do projeto para no novo formato de estrutura",
+      "status": "doing",
+      "priority": "baixa"
+    },
+    {
+      "id": "541e",
+      "title": "SITE VEPLEX - ATUALIZAÇÕES",
+      "description": "Atualização de estrutura e interface do novo projeto - ajustes-gabriel",
+      "status": "doing",
+      "priority": "baixa"
     }
   ]
 }

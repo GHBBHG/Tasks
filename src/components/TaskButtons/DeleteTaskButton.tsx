@@ -13,7 +13,7 @@ export function DeleteTaskButton({ id }: DeleteTaskButtonProps) {
   return (
     <div className="m-2">
       <button
-        className="bg-red-600 p-2 rounded-lg hover:bg-red-700 mb-2"
+        className="bg-red-600 p-2 px-4 rounded-lg hover:bg-red-700 mb-2"
         onClick={handleDelete}
       >
         Excluir
