@@ -11,6 +11,7 @@ const CreateTaskSchema = z.object({
 
 export const NewTask: React.FC = () => {
   const { createTask } = useTasks();
+  const [taste, setTaste] = useState("");
 
   const [formData, setFormData] = useState({
     title: "",
@@ -18,6 +19,14 @@ export const NewTask: React.FC = () => {
     status: "",
     priority: "",
   });
+
+  const teste1 = () => {
+    setTaste("hidden");
+  };
+
+  const teste = () => {
+    setTimeout(teste1, 1000);
+  };
 
   const handleChangeInput = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLSelectElement>
@@ -36,7 +45,7 @@ export const NewTask: React.FC = () => {
   };
 
   return (
-    <div className="bg-zinc-900">
+    <div className={`bg-zinc-900 ${taste}`}>
       <div className="text-start m-5 mt-0 p-4 pt-0">
         <form onSubmit={handleSubmit}>
           <label className="text-white font-medium">Título</label>
@@ -90,6 +99,7 @@ export const NewTask: React.FC = () => {
             <button
               className="border-2 rounded-md px-4 py-1 mr-4 text-white"
               type="submit"
+              onClick={teste}
             >
               Salvar
             </button>
