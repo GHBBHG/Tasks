@@ -34,6 +34,27 @@
       "description": "Atualização de estrutura e interface do novo projeto - ajustes-gabriel",
       "status": "doing",
       "priority": "baixa"
+    },
+    {
+      "id": "7743",
+      "title": "NEW PEDFLEX - TESTAR",
+      "description": "Testar se o Codigo EAN está aparecendo nas telas: lista de produto, foto de produto, lista de combo no card de produto e na imagem desse mesmo card",
+      "status": "done",
+      "priority": "media"
+    },
+    {
+      "id": "28cf",
+      "title": "NEW PEDFLEX - CÓDIGO EAN",
+      "description": "botar codigo ean -> ds_codigo; tabela: produto_unidade. em baixo do codigo de produto nos cards das listas",
+      "status": "done",
+      "priority": "baixa"
+    },
+    {
+      "id": "bfcb",
+      "title": "TASKS - NOVA ESTRUTURA",
+      "description": "criar estrutura nova para viabilizar cada projeto em seu lugar",
+      "status": "todo",
+      "priority": "media"
     }
   ]
 }
