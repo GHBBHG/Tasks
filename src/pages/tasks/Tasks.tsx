@@ -3,6 +3,7 @@ import { TasksList } from "../../components/tasksList/TasksList";
 import { TasksContextProvider } from "../../contexts/TasksContext";
 import { NewTask } from "./NewTask";
 import { Header } from "../../components/header";
+import { Link } from "react-router-dom";
 
 export function Tasks() {
   const [tasks, setTasks] = useState("hidden");
@@ -26,6 +27,12 @@ export function Tasks() {
           Tarefas
         </div>
         <div className="flex justify-end mx-auto w-[90%] my-10 ">
+          <Link
+            to="/completed-tasks"
+            className="text-white mr-4 pt-4 font-medium"
+          >
+            Arquivadas
+          </Link>
           <button className={`text-5xl text-white`} onClick={newTasks}>
             {nameButton}
           </button>

@@ -5,6 +5,9 @@ import { z } from "zod";
 const CreateTaskSchema = z.object({
   title: z.string(),
   description: z.string(),
+  archive: z.string(),
+  projects: z.string(),
+  branch: z.string(),
   status: z.enum(["todo", "doing", "done"]),
   priority: z.enum(["baixa", "media", "alta"]),
 });
@@ -17,6 +20,9 @@ export const NewTask: React.FC = () => {
     title: "",
     description: "",
     status: "",
+    branch: "",
+    archive: "0",
+    projects: "",
     priority: "",
   });
 
@@ -66,6 +72,15 @@ export const NewTask: React.FC = () => {
             required
           ></textarea>
           <br></br>
+          <label className="text-white font-medium">Branch</label>
+          <br></br>
+          <textarea
+            className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+            name="branch"
+            onChange={handleChangeInput}
+            required
+          ></textarea>
+          <br></br>
           <label className="text-white font-medium">Status</label>
           <br></br>
           <select
@@ -92,6 +107,21 @@ export const NewTask: React.FC = () => {
             <option label="baixa">baixa</option>
             <option label="media">media</option>
             <option label="alta">alta</option>
+          </select>
+          <br></br>
+          <label className="text-white font-medium">Projeto</label>
+          <br></br>
+          <select
+            name="projects"
+            onChange={handleChangeInput}
+            className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+            required
+          >
+            <option label=""></option>
+            <option label="Veplex">Veplex</option>
+            <option label="Pedflex">Pedflex</option>
+            <option label="Tasks">Tasks</option>
+            <option label="Outro">other</option>
           </select>
           <br></br>
           <br></br>

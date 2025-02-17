@@ -1,4 +1,4 @@
-import { DeleteTaskButton } from "../TaskButtons/DeleteTaskButton";
+import { ArchiveTaskButton } from "../TaskButtons/ArchiveTaskButton";
 import { ProgressTaskButton } from "../TaskButtons/ProgressTaskButton";
 
 interface CardProps {
@@ -20,7 +20,7 @@ export function Card({ colorHeader, nameTask, tasks }: CardProps) {
 
       {tasks.map((task) => (
         <div className="text-center rounded-lg mt-3 bg-sky-950 text-slate-100">
-          <div className="flex text-start p-1 pl-2 pr-4 rounded-t-lg font-medium bg-gray-800 justify-between">
+          <div className="flex text-start p-3 rounded-t-lg font-medium bg-gray-800 justify-between">
             <div>{task.title}</div>
 
             {task.priority === "baixa" ? (
@@ -47,9 +47,8 @@ export function Card({ colorHeader, nameTask, tasks }: CardProps) {
             {task.status !== "done" ? (
               <ProgressTaskButton id={task.id} status={task.status} />
             ) : (
-              <></>
+              <ArchiveTaskButton id={task.id} />
             )}
-            <DeleteTaskButton id={task.id} />
           </div>
         </div>
       ))}

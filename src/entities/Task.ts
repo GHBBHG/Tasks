@@ -8,4 +8,7 @@ export interface Task {
   description: string;
   status: string;
   priority: string;
+  archive: string;
+  projects: string;
+  branch: string;
 }

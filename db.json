@@ -1,60 +1,94 @@
 {
   "tasks": [
     {
-      "id": "50a6",
-      "title": "ALTERAR DESIGN DO INPUT DE SEARCH",
-      "description": "Pesquisar modelo moderno no estilo do design (minimalista)\n-\nfeat/PED-209",
-      "status": "done",
-      "priority": "media"
-    },
-    {
-      "id": "9427",
+      "id": "d5b0",
       "title": "ADICIONAR ESTOQUE NO PRODUTO",
-      "description": "Adicionar valor no card de produto, e mensagem de ultimas unidades se estoque < 10\n-\nfeat/PED-206",
+      "description": "Adicionar valor no card de produto, e mensagem de ultimas unidades se estoque < 50 ",
+      "archive": "1",
+      "projects": "Pedflex",
+      "branch": "feat/PED-206",
       "status": "done",
       "priority": "alta"
     },
     {
-      "id": "fc6e",
-      "title": "ESTRUTURAR DADOS NOVOS DO SITE VEPLEX",
-      "description": "Esperar o lucas mandar os dados novos e estruturar da melhor forma\nBranch: ajustes-gabriel",
+      "id": "0537",
+      "title": "TESTAR",
+      "description": "Testar se o código EAN esta aparecendo nas telas: lista de produto, foto de produto, lista de combo no card de produto e na imagem desse mesmo card",
+      "archive": "1",
+      "projects": "Pedflex",
+      "branch": "feat/PED-211",
+      "status": "done",
+      "priority": "media"
+    },
+    {
+      "id": "e344",
+      "title": "ALTERAR O DESING DA SEARCHBAR",
+      "description": "Pesquisar modelo moderno no estilo do design (minimalista)",
+      "archive": "1",
+      "projects": "Pedflex",
+      "branch": "feat/PED-209",
+      "status": "done",
+      "priority": "media"
+    },
+    {
+      "id": "e84e",
+      "title": "CÓDIGO EAN",
+      "description": "Botar código EAN -> ds-codigo, tabela produto_unidade. Em baixo do código de produto nos cards das listas ",
+      "archive": "1",
+      "projects": "Pedflex",
+      "branch": "feat/PED-211",
+      "status": "done",
+      "priority": "baixa"
+    },
+    {
+      "id": "fa0d",
+      "title": "ESTRUTURAR DADOS NOVOS",
+      "description": "Esperar o Lucas mandar os dados novos e estruturar da melhor forma",
+      "archive": "0",
+      "projects": "Veplex",
+      "branch": "ajustes-gabriel",
       "status": "todo",
       "priority": "alta"
     },
     {
-      "id": "971b",
-      "title": "TASKS - ATUALIZAR PROJETO",
-      "description": "Atualizar todos os documentos dentro do projeto para no novo formato de estrutura",
-      "status": "doing",
-      "priority": "baixa"
-    },
-    {
-      "id": "541e",
-      "title": "SITE VEPLEX - ATUALIZAÇÕES",
-      "description": "Atualização de estrutura e interface do novo projeto - ajustes-gabriel",
-      "status": "doing",
-      "priority": "baixa"
-    },
-    {
-      "id": "7743",
-      "title": "NEW PEDFLEX - TESTAR",
-      "description": "Testar se o Codigo EAN está aparecendo nas telas: lista de produto, foto de produto, lista de combo no card de produto e na imagem desse mesmo card",
-      "status": "done",
-      "priority": "media"
-    },
-    {
-      "id": "28cf",
-      "title": "NEW PEDFLEX - CÓDIGO EAN",
-      "description": "botar codigo ean -> ds_codigo; tabela: produto_unidade. em baixo do codigo de produto nos cards das listas",
-      "status": "done",
-      "priority": "baixa"
-    },
-    {
-      "id": "bfcb",
-      "title": "TASKS - NOVA ESTRUTURA",
-      "description": "criar estrutura nova para viabilizar cada projeto em seu lugar",
+      "id": "da75",
+      "title": "NOVA ESTRUTURA",
+      "description": "Criar estrutura nova para viabilizar cada projeto em seu lugar",
+      "archive": "0",
+      "projects": "Tasks",
+      "branch": "main",
       "status": "todo",
       "priority": "media"
+    },
+    {
+      "id": "f53e",
+      "title": "IDEIAS",
+      "description": "Pesquisar e ver formas de deixar o site veplex.com.br mais futurista e interativo com os \"clientes\"",
+      "archive": "0",
+      "projects": "Veplex",
+      "branch": "ajustes-gabriel",
+      "status": "doing",
+      "priority": "media"
+    },
+    {
+      "id": "254d",
+      "title": "ATUALIZAR PROJETO",
+      "description": "Atualizar todos os documentos dentro do projeto para o novo formato de estrutura",
+      "archive": "0",
+      "projects": "Tasks",
+      "branch": "main",
+      "status": "doing",
+      "priority": "baixa"
+    },
+    {
+      "id": "e291",
+      "title": "ATUALIZAÇÕES",
+      "description": "Atualização de estrutura e interface do novo projeto",
+      "archive": "0",
+      "projects": "Veplex",
+      "branch": "ajustes-gabriel",
+      "status": "done",
+      "priority": "baixa"
     }
   ]
 }

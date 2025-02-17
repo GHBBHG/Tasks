@@ -4,12 +4,16 @@ import { Card } from "../card/Card";
 
 export function TasksList() {
   const { tasks } = useTasks();
+
   const tasksTodo: Task[] =
     tasks.filter((task) => task.status === "todo") ?? [];
+
   const tasksInProgress: Task[] =
     tasks.filter((task) => task.status === "doing") ?? [];
+
   const tasksDone: Task[] =
-    tasks?.filter((task) => task.status === "done") ?? [];
+    tasks?.filter((task) => task.status === "done" && task.archive === "0") ??
+    [];
 
   return (
     <div className="flex mx-[4%] pb-20">
