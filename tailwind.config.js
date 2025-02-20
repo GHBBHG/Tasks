@@ -7,7 +7,11 @@ export default {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        liveGreen: "#4FDC29",
+      },
+    },
   },
   plugins: [],
 };

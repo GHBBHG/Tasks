@@ -14,7 +14,9 @@ export function CompletedTasksList() {
       {tasksArchive.map((tasksArchives) => (
         <div className="w-[480px] text-center rounded-lg mt-3 bg-sky-950 text-slate-100 h-">
           <div className="flex text-start p-3 rounded-t-lg font-medium bg-gray-800 justify-between">
-            <div>{tasksArchives.title}</div>
+            <div>
+              {tasksArchives.projects}: {tasksArchives.title}
+            </div>
 
             {tasksArchives.priority === "baixa" ? (
               <div className="border-2 border-sky-600 pl-2 pr-2 text-sky-600 rounded-md">
@@ -33,6 +35,11 @@ export function CompletedTasksList() {
 
           <div className="p-4 text-left">
             {tasksArchives.description}
+            <br />
+          </div>
+
+          <div className="px-4 pb-1 text-left">
+            Branch: {tasksArchives.branch}
             <br />
           </div>
 

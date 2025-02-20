@@ -1,51 +1,111 @@
+import { FormEventHandler, useState } from "react";
 import { Header } from "../../components/header";
+import { z } from "zod";
+import { useProject } from "../../hooks/useProject";
+import { Projects } from "../../entities/Projects";
+import { ProjectsList } from "../../components/projectsList";
+
+const CreateProjectSchema = z.object({
+  name: z.string(),
+});
 
 export const TasksByProjects = () => {
+  const { createProject } = useProject();
+  const [showModal, setShowModal] = useState("hidden");
+  const [formData, setFormData] = useState({ name: "" });
+  const [isHidden, setIsHidden] = useState("hidden");
+
+  const abrirModal = () => {
+    setShowModal("");
+  };
+
+  const fecharModal = () => {
+    setShowModal("hidden");
+  };
+
+  const handleChangeInput = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  };
+
+  const reloadProjects = () => {
+    location.reload();
+  };
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
+    event.preventDefault();
+    const projectData = CreateProjectSchema.parse(formData);
+    const response = await createProject(projectData);
+    if (response != null) {
+      setTimeout(reloadProjects, 1500);
+      setIsHidden("");
+    }
+  };
   return (
-    <div className="bg-zinc-900 pb-96">
-      <Header theme="dark" />
+    <>
+      <div className="bg-zinc-900 pb-96">
+        <Header theme="dark" />
 
-      <div className="pl-40 pt-10 pb-0 text-5xl font-medium text-slate-200">
-        Projetos
-      </div>
-
-      <div className="p-20">
-        <div className="bg-zinc-800 text-white text-4xl font-medium w-full rounded-lg p-4 mb-8">
-          Veplex
-          <div className="w-full flex justify-end">
-            <div className="w-28 p-2 text-center bg-sky-400 text-sm rounded-lg hover:bg-sky-500 cursor-pointer">
-              Ver Tarefas
-            </div>
-          </div>
+        <div className="pl-40 pt-10 pb-0 text-5xl font-medium text-slate-200">
+          Projetos
         </div>
 
-        <div className="bg-zinc-800 text-white text-4xl font-medium w-full rounded-lg p-4 mb-8">
-          Pedflex
-          <div className="w-full flex justify-end">
-            <div className="w-28 p-2 text-center bg-sky-400 text-sm rounded-lg hover:bg-sky-500 cursor-pointer">
-              Ver Tarefas
-            </div>
-          </div>
+        <div className="flex justify-end mx-auto w-[85%] ">
+          <button className="text-5xl text-white" onClick={abrirModal}>
+            +
+          </button>
         </div>
 
-        <div className="bg-zinc-800 text-white text-4xl font-medium w-full rounded-lg p-4 mb-8">
-          Tasks
-          <div className="w-full flex justify-end">
-            <div className="w-28 p-2 text-center bg-sky-400 text-sm rounded-lg hover:bg-sky-500 cursor-pointer">
-              Ver Tarefas
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-zinc-800 text-white text-4xl font-medium w-full rounded-lg p-4">
-          Outros
-          <div className="w-full flex justify-end">
-            <div className="w-28 p-2 text-center bg-sky-400 text-sm rounded-lg hover:bg-sky-500 cursor-pointer">
-              Ver Tarefas
-            </div>
-          </div>
+        <div className="p-20 pt-8 flex justify-between">
+          <ProjectsList />
         </div>
       </div>
-    </div>
+      <div
+        className={`${showModal} w-full h-full p-4 bg-black opacity-[0.8] z-[10000] top-0 left-0 fixed`}
+        onClick={fecharModal}
+      ></div>
+      <div
+        className={`${showModal} bg-neutral-800 rounded-xl mx-auto w-[50%] h-[60%] z-[10001] fixed top-[20%] left-[25%] opacity-[1] overflow-y-auto overflow-x-hidden`}
+      >
+        <div className="w-full text-right p-2 px-4 text-2xl text-white">
+          <span onClick={fecharModal} className="cursor-pointer">
+            X
+          </span>
+        </div>
+        <div className="text-4xl font-medium text-white w-full text-left mt-2 mb-8 mx-12">
+          Novo projeto
+        </div>
+        <div
+          className={`${isHidden} bg-liveGreen text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
+        >
+          Tarefa criada com sucesso!
+        </div>
+        <div className="w-[90%] mx-auto">
+          <form onSubmit={handleSubmit}>
+            <label className="text-white font-medium">Nome: </label>
+            <br></br>
+            <textarea
+              className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+              name="name"
+              onChange={handleChangeInput}
+              required
+            ></textarea>
+            <div className="text-right">
+              <button
+                className="border-2 rounded-md px-4 py-1 mt-4 text-white mb-8"
+                type="submit"
+              >
+                Salvar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
   );
 };

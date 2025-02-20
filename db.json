@@ -57,17 +57,17 @@
       "archive": "0",
       "projects": "Tasks",
       "branch": "main",
-      "status": "todo",
+      "status": "doing",
       "priority": "media"
     },
     {
       "id": "f53e",
       "title": "IDEIAS",
       "description": "Pesquisar e ver formas de deixar o site veplex.com.br mais futurista e interativo com os \"clientes\"",
-      "archive": "0",
+      "archive": "1",
       "projects": "Veplex",
       "branch": "ajustes-gabriel",
-      "status": "doing",
+      "status": "done",
       "priority": "media"
     },
     {
@@ -79,16 +79,24 @@
       "branch": "main",
       "status": "doing",
       "priority": "baixa"
+    }
+  ],
+  "project": [
+    {
+      "id": "5eb5",
+      "name": "Pedflex"
     },
     {
-      "id": "e291",
-      "title": "ATUALIZAÇÕES",
-      "description": "Atualização de estrutura e interface do novo projeto",
-      "archive": "0",
-      "projects": "Veplex",
-      "branch": "ajustes-gabriel",
-      "status": "done",
-      "priority": "baixa"
+      "id": "469b",
+      "name": "Veplex"
+    },
+    {
+      "id": "766e",
+      "name": "Tasks"
+    },
+    {
+      "id": "a4c6",
+      "name": "Outras"
     }
   ]
 }

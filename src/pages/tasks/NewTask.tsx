@@ -14,7 +14,7 @@ const CreateTaskSchema = z.object({
 
 export const NewTask: React.FC = () => {
   const { createTask } = useTasks();
-  const [taste, setTaste] = useState("");
+  const [isHidden, setIsHidden] = useState("hidden");
 
   const [formData, setFormData] = useState({
     title: "",
@@ -26,14 +26,6 @@ export const NewTask: React.FC = () => {
     priority: "",
   });
 
-  const teste1 = () => {
-    setTaste("hidden");
-  };
-
-  const teste = () => {
-    setTimeout(teste1, 1000);
-  };
-
   const handleChangeInput = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -44,15 +36,28 @@ export const NewTask: React.FC = () => {
     }));
   };
 
+  const reloadNewTask = () => {
+    location.reload();
+  };
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     const taskData = CreateTaskSchema.parse(formData);
-    await createTask(taskData);
+    const response = await createTask(taskData);
+    if (response != null) {
+      setTimeout(reloadNewTask, 1500);
+      setIsHidden("");
+    }
   };
 
   return (
-    <div className={`bg-zinc-900 ${taste}`}>
+    <div className={`bg-zinc-900`}>
       <div className="text-start m-5 mt-0 p-4 pt-0">
+        <div
+          className={`${isHidden} bg-green-600 text-white font-semibold w-[95%] p-2 my-2 mx-auto rounded-lg`}
+        >
+          Tarefa criada com sucesso!
+        </div>
         <form onSubmit={handleSubmit}>
           <label className="text-white font-medium">Título</label>
           <br></br>
@@ -121,7 +126,7 @@ export const NewTask: React.FC = () => {
             <option label="Veplex">Veplex</option>
             <option label="Pedflex">Pedflex</option>
             <option label="Tasks">Tasks</option>
-            <option label="Outro">other</option>
+            <option label="Outras">Outras</option>
           </select>
           <br></br>
           <br></br>
@@ -129,7 +134,6 @@ export const NewTask: React.FC = () => {
             <button
               className="border-2 rounded-md px-4 py-1 mr-4 text-white"
               type="submit"
-              onClick={teste}
             >
               Salvar
             </button>

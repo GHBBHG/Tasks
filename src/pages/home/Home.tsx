@@ -35,7 +35,7 @@ export function Home() {
         <div className="absolute top-[40%] left-[45%] w-[10%] text-white mx-auto">
           <Link to="/tasks">
             <div className="text-center bg-sky-400 px-6 py-3 font-semibold text-md rounded-full hover:bg-sky-500 cursor-pointer">
-              Ir para Tarefas
+              Tarefas
             </div>
           </Link>
         </div>
@@ -43,7 +43,7 @@ export function Home() {
         <div className="absolute top-[46%] left-[44%] w-[12%] text-white mx-auto">
           <Link to="/completed-tasks">
             <div className="text-center bg-sky-400 px-6 py-3 font-semibold text-md rounded-full hover:bg-sky-500 cursor-pointer">
-              Ver Tarefas Arquivadas
+              Tarefas Arquivadas
             </div>
           </Link>
         </div>

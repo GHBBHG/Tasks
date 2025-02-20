@@ -10,6 +10,8 @@ interface CardProps {
     priority: string;
     status: string;
     title: string;
+    branch: string;
+    projects: string;
   }[];
 }
 
@@ -21,7 +23,9 @@ export function Card({ colorHeader, nameTask, tasks }: CardProps) {
       {tasks.map((task) => (
         <div className="text-center rounded-lg mt-3 bg-sky-950 text-slate-100">
           <div className="flex text-start p-3 rounded-t-lg font-medium bg-gray-800 justify-between">
-            <div>{task.title}</div>
+            <div>
+              {task.projects}: {task.title}
+            </div>
 
             {task.priority === "baixa" ? (
               <div className="border-2 border-sky-600 pl-2 pr-2 text-sky-600 rounded-md">
@@ -40,6 +44,11 @@ export function Card({ colorHeader, nameTask, tasks }: CardProps) {
 
           <div className="p-4 text-left">
             {task.description}
+            <br />
+          </div>
+
+          <div className="px-4 pb-1 text-left">
+            Branch: {task.branch}
             <br />
           </div>
 
