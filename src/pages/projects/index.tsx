@@ -1,18 +1,16 @@
 import { Link, useParams } from "react-router-dom";
 import { useTasks } from "../../hooks/useTasks";
 import { Task } from "../../entities/Task";
-import { Header } from "../../components/header";
 
 export const Projects = () => {
   const { tasks } = useTasks();
   const { projeto } = useParams();
 
   const tasksProjects: Task[] =
-    tasks.filter((task) => task.projects === projeto) ?? [];
+    tasks?.filter((task) => task.projects === projeto) ?? [];
 
   return (
-    <div className="bg-zinc-900 pb-96">
-      <Header />
+    <div className="pb-96">
       <div className="pl-40 pt-12 text-5xl font-medium text-slate-200">
         {projeto} tarefas:
       </div>
@@ -27,11 +25,30 @@ export const Projects = () => {
       <div className="flex flex-wrap gap-6 w-full min-h-60 mx-auto items-center justify-center">
         {tasksProjects.map((tasksArchives) => (
           <div className="w-[480px] min-h-52 text-center rounded-lg mt-3 bg-sky-950 text-slate-100 h-">
-            <div className="flex text-start p-3 rounded-t-lg font-medium bg-gray-800 justify-between">
-              <div>
-                {tasksArchives.projects}: {tasksArchives.title}
-              </div>
-
+            <div className="flex p-3 pb-0 rounded-t-lg font-medium bg-gray-800 justify-left">
+              {tasksArchives.title}
+            </div>
+            <div className="bg-gray-800 flex gap-2 p-2 pt-0 justify-end items-end">
+              {tasksArchives.archive === "1" ? (
+                <div className="text-yellow-400 font-semibold text-sm">
+                  *Arquivado
+                </div>
+              ) : (
+                ""
+              )}
+              {tasksArchives.status === "todo" ? (
+                <div className="border-2 border-blue-400 pl-2 pr-2 text-blue-400 rounded-md w-[73px]">
+                  A fazer
+                </div>
+              ) : tasksArchives.status === "doing" ? (
+                <div className="border-2 border-purple-400 pl-2 pr-2 text-purple-400 rounded-md w-[122px]">
+                  Em progresso
+                </div>
+              ) : (
+                <div className="border-2 border-green-400 pl-2 pr-2 text-green-400 rounded-md w-[94px]">
+                  Finalizado
+                </div>
+              )}
               {tasksArchives.priority === "baixa" ? (
                 <div className="border-2 border-sky-600 pl-2 pr-2 text-sky-600 rounded-md">
                   {tasksArchives.priority}

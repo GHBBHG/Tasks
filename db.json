@@ -54,10 +54,10 @@
       "id": "da75",
       "title": "NOVA ESTRUTURA",
       "description": "Criar estrutura nova para viabilizar cada projeto em seu lugar",
-      "archive": "0",
+      "archive": "1",
       "projects": "Tasks",
       "branch": "main",
-      "status": "doing",
+      "status": "done",
       "priority": "media"
     },
     {
@@ -74,11 +74,41 @@
       "id": "254d",
       "title": "ATUALIZAR PROJETO",
       "description": "Atualizar todos os documentos dentro do projeto para o novo formato de estrutura",
+      "archive": "1",
+      "projects": "Tasks",
+      "branch": "main",
+      "status": "done",
+      "priority": "baixa"
+    },
+    {
+      "id": "7b99",
+      "title": "Criar um e-comerce ",
+      "description": "No projeto das tasks criar uma tela que busque uma api fake para criar um e-comerce falso",
+      "archive": "0",
+      "projects": "Tasks",
+      "branch": "ecomerce",
+      "status": "todo",
+      "priority": "baixa"
+    },
+    {
+      "id": "40f3",
+      "title": "Manipular projeto",
+      "description": "criar uma forma de: em cada projeto ter areas ao qual será mechida ao qual o nome dado de \"tela\"",
+      "archive": "0",
+      "projects": "Tasks",
+      "branch": "new-tela-projeto",
+      "status": "todo",
+      "priority": "media"
+    },
+    {
+      "id": "b179",
+      "title": "Organização",
+      "description": "Organizar documentação do projeto com base no que sabe",
       "archive": "0",
       "projects": "Tasks",
       "branch": "main",
       "status": "doing",
-      "priority": "baixa"
+      "priority": "alta"
     }
   ],
   "project": [

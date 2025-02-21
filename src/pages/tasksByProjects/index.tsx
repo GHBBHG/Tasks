@@ -1,26 +1,19 @@
 import { FormEventHandler, useState } from "react";
-import { Header } from "../../components/header";
 import { z } from "zod";
 import { useProject } from "../../hooks/useProject";
 import { ProjectsList } from "../../components/projectsList";
 
-const CreateProjectSchema = z.object({
-  name: z.string(),
-});
-
 export const TasksByProjects = () => {
   const { createProject } = useProject();
+
   const [showModal, setShowModal] = useState("hidden");
+  const [isSuccessHidden, setIsSuccessHidden] = useState("hidden");
   const [formData, setFormData] = useState({ name: "" });
-  const [isHidden, setIsHidden] = useState("hidden");
 
-  const abrirModal = () => {
-    setShowModal("");
-  };
-
-  const fecharModal = () => {
-    setShowModal("hidden");
-  };
+  const reloadProjects = () => location.reload();
+  const CreateProjectSchema = z.object({
+    name: z.string(),
+  });
 
   const handleChangeInput = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLSelectElement>
@@ -32,30 +25,31 @@ export const TasksByProjects = () => {
     }));
   };
 
-  const reloadProjects = () => {
-    location.reload();
-  };
-
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
+
     const projectData = CreateProjectSchema.parse(formData);
     const response = await createProject(projectData);
+
     if (response != null) {
       setTimeout(reloadProjects, 1500);
-      setIsHidden("");
+      setIsSuccessHidden("");
+      return;
     }
   };
+
   return (
     <>
-      <div className="bg-zinc-900 pb-96">
-        <Header />
-
+      <div className="pb-80">
         <div className="pl-40 pt-10 pb-0 text-5xl font-medium text-slate-200">
           Projetos
         </div>
 
         <div className="flex justify-end mx-auto w-[85%] ">
-          <button className="text-5xl text-white" onClick={abrirModal}>
+          <button
+            className="text-5xl text-white"
+            onClick={() => setShowModal("")}
+          >
             +
           </button>
         </div>
@@ -66,13 +60,16 @@ export const TasksByProjects = () => {
       </div>
       <div
         className={`${showModal} w-full h-full p-4 bg-black opacity-[0.8] z-[10000] top-0 left-0 fixed`}
-        onClick={fecharModal}
+        onClick={() => setShowModal("hidden")}
       ></div>
       <div
         className={`${showModal} bg-neutral-800 rounded-xl mx-auto w-[50%] h-[60%] z-[10001] fixed top-[20%] left-[25%] opacity-[1] overflow-y-auto overflow-x-hidden`}
       >
         <div className="w-full text-right p-2 px-4 text-2xl text-white">
-          <span onClick={fecharModal} className="cursor-pointer">
+          <span
+            onClick={() => setShowModal("hidden")}
+            className="cursor-pointer"
+          >
             X
           </span>
         </div>
@@ -80,7 +77,7 @@ export const TasksByProjects = () => {
           Adicionar projeto
         </div>
         <div
-          className={`${isHidden} bg-liveGreen text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
+          className={`${isSuccessHidden} bg-liveGreen text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
         >
           Tarefa criada com sucesso!
         </div>

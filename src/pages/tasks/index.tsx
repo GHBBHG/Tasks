@@ -1,6 +1,5 @@
 import { FormEventHandler, useState } from "react";
 import { TasksList } from "../../components/tasksList";
-import { Header } from "../../components/header";
 import { z } from "zod";
 import { useTasks } from "../../hooks/useTasks";
 import { useProject } from "../../hooks/useProject";
@@ -67,8 +66,7 @@ export function Tasks() {
 
   return (
     <>
-      <div className="bg-zinc-900 pb-96">
-        <Header />
+      <div className="pb-96">
         <div className="pl-40 pt-10 pb-0 text-5xl font-medium text-slate-200">
           Tarefas
         </div>
