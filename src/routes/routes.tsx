@@ -1,14 +1,13 @@
 import { BrowserRouter, Routes as RRDRouter, Route } from "react-router-dom";
-
 import { CompletedTasks } from "../pages/completedTasks";
-import { Home } from "../pages/home/Home";
-import { Tasks } from "../pages/tasks/Tasks";
+import { Home } from "../pages/home";
+import { Tasks } from "../pages/tasks";
 import { TasksByProjects } from "../pages/tasksByProjects";
 import { Projects } from "../pages/projects";
 import { ProjectContextProvider } from "../contexts/projectContext";
 import { TasksContextProvider } from "../contexts/TasksContext";
 
-export function Routes() {
+export const Routes = () => {
   return (
     <TasksContextProvider>
       <ProjectContextProvider>
@@ -34,4 +33,4 @@ export function Routes() {
       </ProjectContextProvider>
     </TasksContextProvider>
   );
-}
+};

@@ -2,7 +2,6 @@ import { FormEventHandler, useState } from "react";
 import { Header } from "../../components/header";
 import { z } from "zod";
 import { useProject } from "../../hooks/useProject";
-import { Projects } from "../../entities/Projects";
 import { ProjectsList } from "../../components/projectsList";
 
 const CreateProjectSchema = z.object({
@@ -49,7 +48,7 @@ export const TasksByProjects = () => {
   return (
     <>
       <div className="bg-zinc-900 pb-96">
-        <Header theme="dark" />
+        <Header />
 
         <div className="pl-40 pt-10 pb-0 text-5xl font-medium text-slate-200">
           Projetos
@@ -61,7 +60,7 @@ export const TasksByProjects = () => {
           </button>
         </div>
 
-        <div className="p-20 pt-8 flex justify-between">
+        <div className="flex flex-wrap gap-6 w-full min-h-60 mx-auto items-center justify-center p-20">
           <ProjectsList />
         </div>
       </div>
@@ -78,7 +77,7 @@ export const TasksByProjects = () => {
           </span>
         </div>
         <div className="text-4xl font-medium text-white w-full text-left mt-2 mb-8 mx-12">
-          Novo projeto
+          Adicionar projeto
         </div>
         <div
           className={`${isHidden} bg-liveGreen text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}

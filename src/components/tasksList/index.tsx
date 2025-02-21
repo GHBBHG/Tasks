@@ -1,6 +1,6 @@
 import { Task } from "../../entities/Task";
 import { useTasks } from "../../hooks/useTasks";
-import { Card } from "../card/Card";
+import { Card } from "../card";
 
 export function TasksList() {
   const { tasks } = useTasks();

@@ -1,7 +1,6 @@
 import { FormEventHandler, useState } from "react";
-import { TasksList } from "../../components/tasksList/TasksList";
+import { TasksList } from "../../components/tasksList";
 import { Header } from "../../components/header";
-import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useTasks } from "../../hooks/useTasks";
 import { useProject } from "../../hooks/useProject";
@@ -69,17 +68,11 @@ export function Tasks() {
   return (
     <>
       <div className="bg-zinc-900 pb-96">
-        <Header theme="dark" />
-        <div className="pl-40 pt-10 pb-0 text-7xl font-medium text-slate-200">
+        <Header />
+        <div className="pl-40 pt-10 pb-0 text-5xl font-medium text-slate-200">
           Tarefas
         </div>
-        <div className="flex justify-end mx-auto w-[90%] my-10 ">
-          <Link
-            to="/completed-tasks"
-            className="text-white mr-4 pt-4 font-medium"
-          >
-            Arquivadas
-          </Link>
+        <div className="flex justify-end mx-auto w-[90%] mb-10 ">
           <button className="text-5xl text-white" onClick={abrirModal}>
             +
           </button>
@@ -99,7 +92,7 @@ export function Tasks() {
           </span>
         </div>
         <div className="text-4xl font-medium text-white w-full text-left mt-2 mb-8 mx-12">
-          Nova tarefa
+          Adicionar tarefa
         </div>
         <div
           className={`${isHidden} bg-liveGreen text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
@@ -108,7 +101,7 @@ export function Tasks() {
         </div>
         <div className="w-[90%] mx-auto">
           <form onSubmit={handleSubmit}>
-            <label className="text-white font-medium">Título</label>
+            <label className="text-white font-medium">Título:</label>
             <br></br>
             <textarea
               className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
@@ -117,7 +110,7 @@ export function Tasks() {
               required
             ></textarea>
             <br></br>
-            <label className="text-white font-medium">Descrição</label>
+            <label className="text-white font-medium">Descrição:</label>
             <br></br>
             <textarea
               className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
@@ -126,7 +119,7 @@ export function Tasks() {
               required
             ></textarea>
             <br></br>
-            <label className="text-white font-medium">Branch</label>
+            <label className="text-white font-medium">Branch:</label>
             <br></br>
             <textarea
               className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
@@ -135,7 +128,7 @@ export function Tasks() {
               required
             ></textarea>
             <br></br>
-            <label className="text-white font-medium">Status</label>
+            <label className="text-white font-medium">Status:</label>
             <br></br>
             <select
               name="status"
@@ -149,7 +142,7 @@ export function Tasks() {
               <option label="Finalizado">done</option>
             </select>
             <br></br>
-            <label className="text-white font-medium">Prioridade</label>
+            <label className="text-white font-medium">Prioridade:</label>
             <br></br>
             <select
               name="priority"
@@ -164,7 +157,7 @@ export function Tasks() {
             </select>
             <br></br>
 
-            <label className="text-white font-medium">Projeto</label>
+            <label className="text-white font-medium">Projeto:</label>
             <br></br>
             <select
               name="projects"

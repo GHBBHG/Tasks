@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useTasks } from "../../hooks/useTasks";
 import { Task } from "../../entities/Task";
-import { useEffect } from "react";
 import { Header } from "../../components/header";
 
 export const Projects = () => {
@@ -11,13 +10,9 @@ export const Projects = () => {
   const tasksProjects: Task[] =
     tasks.filter((task) => task.projects === projeto) ?? [];
 
-  useEffect(() => {
-    console.log("tasks:", tasksProjects);
-  }, [tasksProjects]);
-
   return (
     <div className="bg-zinc-900 pb-96">
-      <Header theme="dark" />
+      <Header />
       <div className="pl-40 pt-12 text-5xl font-medium text-slate-200">
         {projeto} tarefas:
       </div>
@@ -31,7 +26,7 @@ export const Projects = () => {
       </div>
       <div className="flex flex-wrap gap-6 w-full min-h-60 mx-auto items-center justify-center">
         {tasksProjects.map((tasksArchives) => (
-          <div className="w-[480px] text-center rounded-lg mt-3 bg-sky-950 text-slate-100 h-">
+          <div className="w-[480px] min-h-52 text-center rounded-lg mt-3 bg-sky-950 text-slate-100 h-">
             <div className="flex text-start p-3 rounded-t-lg font-medium bg-gray-800 justify-between">
               <div>
                 {tasksArchives.projects}: {tasksArchives.title}
