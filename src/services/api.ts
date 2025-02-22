@@ -1,3 +1,4 @@
+import { Ecommerce } from "../entities/Ecommerce";
 import { Projects } from "../entities/Projects";
 import { Task } from "../entities/Task";
 
@@ -63,4 +64,12 @@ export const projectService = {
     const newProject: Projects = await response.json();
     return newProject;
   },
+};
+
+export const ecommerceService = {
+  async fetchEcommerce(): Promise<Ecommerce[]> {
+    const response = await fetch(import.meta.env.VITE_STORE_API_URL);
+    const data: Ecommerce[] = await response.json();
+    return data;
+  }
 };

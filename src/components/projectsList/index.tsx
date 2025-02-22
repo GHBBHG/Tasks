@@ -9,7 +9,7 @@ type TaskCountByProject = Record<string, { name: string; qtTasks: number }>;
 export function ProjectsList() {
   const { project } = useProject();
   const { tasks } = useTasks();
-  const listProjects: Projects[] = project?.filter((a) => a.name != null) ?? [];
+  const listProjects: Projects[] = project.filter((a) => a.name);
 
   let taskCountByProject: TaskCountByProject = {};
 

@@ -25,6 +25,13 @@ export const Header = () => {
             Início
           </Link>
 
+          <Link 
+            className="border-b-[1px] px-1 hover:border-sky-300 hover:text-sky-300 duration-100 ease-in"
+            to="/e-commerce"
+          >
+            Loja
+          </Link>
+
           <Link
             className="border-b-[1px] px-1 hover:border-sky-300 hover:text-sky-300 duration-100 ease-in"
             to="/tasks-by-projects"

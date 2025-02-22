@@ -4,6 +4,7 @@ import { Home } from "../pages/home";
 import { Tasks } from "../pages/tasks";
 import { TasksByProjects } from "../pages/tasksByProjects";
 import { Projects } from "../pages/projects";
+import { ECommerce } from "../pages/ecommerce"
 import { Wrapper } from "../components/Wrapper";
 
 export const Routes = createBrowserRouter([
@@ -30,6 +31,10 @@ export const Routes = createBrowserRouter([
       {
         path: "/projects/:projeto",
         element: <Projects />,
+      },
+      {
+        path: "/e-commerce",
+        element: <ECommerce />,
       },
     ],
   },
