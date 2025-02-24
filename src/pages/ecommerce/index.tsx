@@ -19,21 +19,21 @@ export const ECommerce = () => {
           className="w-[90%] mx-auto bg-neutral-800 p-10 my-8 flex rounded-md gap-2"
           key={products.id}
         >
-          <div className="w-[10%] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 p-1 cursor-pointer">
+          <div className="w-[10%] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 cursor-pointer">
             <img
-              src={products.image}
-              className="w-28"
-              onClick={() => setUrlImage(products.image)}
+              src={products.images[0]}
+              className="w-full object-cover rounded-md"
+              onClick={() => setUrlImage(products.images[0])}
             />
           </div>
           <div className="w-[60%] text-white">
-            <div className="text-gray-400 text-xs">{products.category}</div>
+            <div className="text-gray-400 text-xs">
+              {products.category.name}
+            </div>
             <div className="text-lg font-medium">{products.title}</div>
-            <div className="text-sm">Avaliação: {products.rating.rate}/5</div>
             <div className="text-sm">{products.description}</div>
           </div>
           <div className="">R${products.price}</div>
-          <div className="">Estoque: {products.rating.count}</div>
           <hr />
         </div>
       ))}
