@@ -1,12 +1,18 @@
 export interface Ecommerce {
   id: number;
   title: string;
+  slug: string;
   price: number;
   description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
+  category: {
+    id: number;
+    name: string;
+    slug: string;
+    image: string;
+    creationAt: string;
+    updatedAt: string;
   };
+  images: [string, string, string];
+  creationAt: string;
+  updatedAt: string;
 }
