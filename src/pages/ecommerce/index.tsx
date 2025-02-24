@@ -8,6 +8,8 @@ export const ECommerce = () => {
   const [urlImage, setUrlImage] = useState("");
   const arrayProducts: Ecommerce[] = ecommerce.filter((product) => product.id);
 
+  console.log(arrayProducts);
+
   useEffect(() => {
     if (urlImage) setShowModal("");
   }, [urlImage]);
@@ -16,24 +18,65 @@ export const ECommerce = () => {
     <div className="block w-full pb-20 text-white">
       {arrayProducts.map((products) => (
         <div
-          className="w-[90%] mx-auto bg-neutral-800 p-10 my-8 flex rounded-md gap-2"
+          className="w-[85%] mx-auto bg-neutral-800 p-10 my-8 flex rounded-md"
           key={products.id}
         >
-          <div className="w-[10%] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 cursor-pointer">
+          <div className="w-[15%] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 cursor-pointer">
             <img
               src={products.images[0]}
               className="w-full object-cover rounded-md"
               onClick={() => setUrlImage(products.images[0])}
             />
           </div>
-          <div className="w-[60%] text-white">
-            <div className="text-gray-400 text-xs">
+          <div className="w-[60%] text-white p-4">
+            <div className="text-gray-400 text-sm">
               {products.category.name}
             </div>
-            <div className="text-lg font-medium">{products.title}</div>
-            <div className="text-sm">{products.description}</div>
+            <div className="text-xl font-medium">{products.title}</div>
+            <div className="text-base">{products.description}</div>
           </div>
-          <div className="">R${products.price}</div>
+          <div className="w-[25%] flex justify-center items-center">
+            <div className="block text-center">
+              <div className="text-xs text-green-400 ">
+                {products.category.name === "Aram"
+                  ? "20% OFF"
+                  : products.category.name === "Change title"
+                  ? "10% OFF"
+                  : products.category.name === "Miscellaneous"
+                  ? "50% OFF"
+                  : ""}
+              </div>
+              {products.category.name === "Aram" ||
+              products.category.name === "Change title" ||
+              products.category.name === "Miscellaneous" ? (
+                <div className="text-xl text-gray-400 line-through decoration-white decoration-2">
+                  R${products.price}
+                </div>
+              ) : (
+                ""
+              )}
+              <div className="text-3xl text-gray-200 font-medium">
+                {products.category.name === "Aram"
+                  ? "R$" + (products.price / 10) * 8
+                  : products.category.name === "Change title"
+                  ? "R$" + (products.price / 10) * 9
+                  : products.category.name === "Miscellaneous"
+                  ? "R$" + (products.price / 10) * 5
+                  : "R$" + products.price}
+              </div>
+              <div className="flex mt-8 justify-center">
+                <div className="text-4xl font-bold rounded-full w-12 h-12 flex items-center justify-center cursor-pointer bg-red-500">
+                  -
+                </div>
+                <div className="text-2xl font-medium flex items-center justify-center w-16">
+                  0
+                </div>
+                <div className="text-4xl font-bold rounded-full w-12 h-12 flex items-center justify-center cursor-pointer bg-green-500">
+                  +
+                </div>
+              </div>
+            </div>
+          </div>
           <hr />
         </div>
       ))}

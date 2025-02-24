@@ -116,7 +116,17 @@
       "description": "criar nova estrutura para rodar uma api mais completa para o e-commerce link referencial: https://api.escuelajs.co/api/v1/products",
       "archive": "0",
       "projects": "Tasks",
-      "branch": "ecomerce",
+      "branch": "feat/e-commerce",
+      "status": "done",
+      "priority": "media"
+    },
+    {
+      "id": "6b68",
+      "title": "POSSIBILIDADE",
+      "description": "ver a possibilidade de criar uma fake store api para poder manipular tudo, a criação de produtos categorias descontos e etc",
+      "archive": "0",
+      "projects": "Tasks",
+      "branch": "feat/database-ecommerce",
       "status": "doing",
       "priority": "media"
     }
