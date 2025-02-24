@@ -4,7 +4,7 @@ import { Home } from "../pages/home";
 import { Tasks } from "../pages/tasks";
 import { TasksByProjects } from "../pages/tasksByProjects";
 import { Projects } from "../pages/projects";
-import { ECommerce } from "../pages/ecommerce"
+import { ECommerce } from "../pages/ecommerce";
 import { Wrapper } from "../components/Wrapper";
 
 export const Routes = createBrowserRouter([
