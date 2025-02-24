@@ -87,7 +87,7 @@
       "archive": "0",
       "projects": "Tasks",
       "branch": "ecomerce",
-      "status": "doing",
+      "status": "done",
       "priority": "baixa"
     },
     {
@@ -109,6 +109,16 @@
       "branch": "main",
       "status": "doing",
       "priority": "alta"
+    },
+    {
+      "id": "e813",
+      "title": "MUDAR API",
+      "description": "criar nova estrutura para rodar uma api mais completa para o e-commerce link referencial: https://api.escuelajs.co/api/v1/products",
+      "archive": "0",
+      "projects": "Tasks",
+      "branch": "ecomerce",
+      "status": "doing",
+      "priority": "media"
     }
   ],
   "project": [
