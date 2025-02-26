@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { formatInputCurrency } from "../../utils/validators";
 
-type CountProduct = Record<number, { quantity: number }>;
+interface ValuesProductProps {
+  price: number;
+  category: string;
+}
 
-export const ValuesProduct = (product: any) => {
-  const products = product.product;
-  const [test, setTest] = useState(0);
-  let countProduct: CountProduct = {};
+export const ValuesProduct = ({ price, category }: ValuesProductProps) => {
+  const [quantityOfProduct, setQuantityOfProduct] = useState(0);
+
   const categoryDiscount = (product: string) => {
     if (product === "Roupas") return "20% OFF";
     if (product === "Variados") return "15% OFF";
@@ -38,34 +40,42 @@ export const ValuesProduct = (product: any) => {
   return (
     <div className="block text-center">
       <div className="text-xs text-green-400 ">
-        {categoryDiscount(products.category.name)}
+        {categoryDiscount(category)}
       </div>
-      {isDiscount(products.category.name) ? (
-        <div className="text-xl text-gray-400 line-through decoration-white decoration-2">
-          R${products.price}
+      {isDiscount(category) ? (
+        <div className="text-xl text-gray-400 line-through decoration-gray-200 decoration-2">
+          {formatInputCurrency(price)}
         </div>
       ) : (
         ""
       )}
-      <div className="text-3xl text-gray-200 font-medium">
-        {valueCategoryDiscount(products.category.name, products.price / 10)}
+      <div
+        className={`text-3xl font-medium ${
+          quantityOfProduct > 0 ? "text-white" : "text-gray-300"
+        }`}
+      >
+        {valueCategoryDiscount(
+          category,
+          (price / 10) * (quantityOfProduct > 0 ? quantityOfProduct : 1)
+        )}
       </div>
       <div className="flex mt-8 justify-center">
         <div
-          className="text-4xl font-bold rounded-l-full w-12 h-12 flex items-center justify-center cursor-pointer bg-red-500"
+          className="text-4xl font-bold rounded-l-full w-12 h-12 flex items-center justify-center cursor-pointer bg-red-500 select-none"
           onClick={() => {
-            setTest(test - 1);
+            if (quantityOfProduct > 0)
+              setQuantityOfProduct(quantityOfProduct - 1);
           }}
         >
           -
         </div>
-        <div className="text-2xl font-medium flex items-center justify-center w-16 bg-neutral-700">
-          {test}
+        <div className="text-2xl font-medium flex items-center justify-center w-16 bg-neutral-700 select-none">
+          {quantityOfProduct}
         </div>
         <div
-          className="text-4xl font-bold rounded-r-full w-12 h-12 flex items-center justify-center cursor-pointer bg-green-500"
+          className="text-4xl font-bold rounded-r-full w-12 h-12 flex items-center justify-center cursor-pointer bg-green-500 select-none"
           onClick={() => {
-            setTest(test + 1);
+            setQuantityOfProduct(quantityOfProduct + 1);
           }}
         >
           +
