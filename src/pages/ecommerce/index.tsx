@@ -14,10 +14,10 @@ export const ECommerce = () => {
   }, [urlImage]);
 
   return (
-    <div className="block w-full pb-20 text-white">
+    <div className="block w-full py-12 text-white">
       {arrayProducts.map((products) => (
         <div
-          className="w-[85%] mx-auto bg-neutral-800 p-10 my-8 flex rounded-md"
+          className="w-[85%] mx-auto bg-neutral-800 p-2 my-8 flex rounded-md"
           key={products.id}
         >
           <div className="w-[15%] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 cursor-pointer">
@@ -35,7 +35,10 @@ export const ECommerce = () => {
             <div className="text-base">{products.description}</div>
           </div>
           <div className="w-[25%] flex justify-center items-center">
-            <ValuesProduct product={products} />
+            <ValuesProduct
+              price={products.price}
+              category={products.category.name}
+            />
           </div>
           <hr />
         </div>
