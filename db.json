@@ -55,7 +55,7 @@
       "title": "NOVA ESTRUTURA",
       "description": "Criar estrutura nova para viabilizar cada projeto em seu lugar",
       "archive": "1",
-      "projects": "Tasks",
+      "projects": "GHB",
       "branch": "main",
       "status": "done",
       "priority": "media"
@@ -75,7 +75,7 @@
       "title": "ATUALIZAR PROJETO",
       "description": "Atualizar todos os documentos dentro do projeto para o novo formato de estrutura",
       "archive": "1",
-      "projects": "Tasks",
+      "projects": "GHB",
       "branch": "main",
       "status": "done",
       "priority": "baixa"
@@ -85,7 +85,7 @@
       "title": "Criar um e-comerce ",
       "description": "No projeto das tasks criar uma tela que busque uma api fake para criar um e-comerce falso",
       "archive": "1",
-      "projects": "Tasks",
+      "projects": "GHB",
       "branch": "ecomerce",
       "status": "done",
       "priority": "baixa"
@@ -95,7 +95,7 @@
       "title": "Manipular projeto",
       "description": "criar uma forma de: em cada projeto ter areas ao qual será mechida ao qual o nome dado de \"tela\"",
       "archive": "0",
-      "projects": "Tasks",
+      "projects": "GHB",
       "branch": "new-tela-projeto",
       "status": "todo",
       "priority": "media"
@@ -105,7 +105,7 @@
       "title": "Organização",
       "description": "Organizar documentação do projeto com base no que sabe",
       "archive": "0",
-      "projects": "Tasks",
+      "projects": "GHB",
       "branch": "main",
       "status": "doing",
       "priority": "alta"
@@ -115,7 +115,7 @@
       "title": "MUDAR API",
       "description": "criar nova estrutura para rodar uma api mais completa para o e-commerce link referencial: https://api.escuelajs.co/api/v1/products",
       "archive": "0",
-      "projects": "Tasks",
+      "projects": "GHB",
       "branch": "feat/e-commerce",
       "status": "done",
       "priority": "media"
@@ -125,7 +125,7 @@
       "title": "POSSIBILIDADE",
       "description": "ver a possibilidade de criar uma fake store api para poder manipular tudo, a criação de produtos categorias descontos e etc",
       "archive": "0",
-      "projects": "Tasks",
+      "projects": "GHB",
       "branch": "feat/e-commerce",
       "status": "done",
       "priority": "media"
@@ -135,7 +135,7 @@
       "title": "CRIAÇÃO",
       "description": "Criar tela para criacao de produtos e exclusao dos mesmos",
       "archive": "0",
-      "projects": "Tasks",
+      "projects": "GHB",
       "branch": "feat/create-products",
       "status": "todo",
       "priority": "media"
@@ -145,7 +145,7 @@
       "title": "CRIAÇÃO DE CATEGORIAS",
       "description": "Criar tela para criar categorias para os produtos e uma tela para aplicar descontos nos mesmos",
       "archive": "0",
-      "projects": "Tasks",
+      "projects": "GHB",
       "branch": "feat/create-category",
       "status": "todo",
       "priority": "alta"
@@ -162,7 +162,7 @@
     },
     {
       "id": "766e",
-      "name": "Tasks"
+      "name": "GHB"
     },
     {
       "id": "a4c6",
