@@ -71,5 +71,5 @@ export const ecommerceService = {
     const response = await fetch(import.meta.env.VITE_STORE_API_URL);
     const data: Ecommerce[] = await response.json();
     return data;
-  },
+  }
 };

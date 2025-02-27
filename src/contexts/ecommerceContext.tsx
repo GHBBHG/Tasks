@@ -12,9 +12,9 @@ interface EcommerceContextProviderProps {
   children: ReactNode;
 }
 
-export const EcommerceContextProvider: React.FC<
-  EcommerceContextProviderProps
-> = ({ children }) => {
+export const EcommerceContextProvider: React.FC<EcommerceContextProviderProps> = ({
+  children,
+}) => {
   const [ecommerce, setEcommerce] = useState<Ecommerce[]>([]);
 
   useEffect(() => {
