@@ -2,9 +2,14 @@ import { Menu, Search } from "lucide-react";
 import { Ecommerce } from "../../entities/Ecommerce";
 import { useEcommerce } from "../../hooks/useEcommerce";
 import { formatInputCurrency } from "../../utils/validators";
+import { useCategory } from "../../hooks/useCategory";
+import { Category } from "../../entities/Category";
 
 export const ECommerce = () => {
   const { ecommerce } = useEcommerce();
+  const { category } = useCategory();
+
+  const arrayCategorys: Category[] = category.filter((category) => category.id);
   const arrayProducts: Ecommerce[] = ecommerce.filter((product) => product.id);
 
   return (
@@ -28,25 +33,33 @@ export const ECommerce = () => {
 
         <Menu color="white" width={50} height={50} className="cursor-pointer" />
       </div>
-
-      <div className="flex w-[74%] gap-20 mx-auto py-20 text-white overflow-auto">
-        {arrayProducts.map((products) => (
-          <div
-            className="w-[500px] bg-faint_bg_gray block rounded-md relative"
-            key={products.id}
-          >
-            <div className="w-[300px] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 m-4">
-              <img src={products.images[0]} className="rounded-md" />
+      <div className="w-[92%] mx-auto">
+        {arrayCategorys.map((category) => (
+          <div key={category.id}>
+            <div className="flex text-3xl font-semibold text-white py-12">
+              {category.name}
             </div>
+            <div className="flex w-[90%] gap-20 mx-auto text-white overflow-auto">
+              {arrayProducts.map((products) => (
+                <div
+                  className="w-[500px] bg-faint_bg_gray block rounded-md relative"
+                  key={products.id}
+                >
+                  <div className="w-[300px] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 m-4">
+                    <img src={products.images[0]} className="rounded-md" />
+                  </div>
 
-            <div className="text-white pt-1 px-4 mb-8 w-[90%]">
-              <div className="text-lg font-medium">{products.title}</div>
-            </div>
+                  <div className="text-white pt-1 px-4 mb-8 w-[90%]">
+                    <div className="text-lg font-medium">{products.title}</div>
+                  </div>
 
-            <div className="text-white w-full bg-red-50 absolute bottom-0">
-              <div className="text-lg font-medium absolute bottom-1 right-3">
-                {formatInputCurrency(products.price)}
-              </div>
+                  <div className="text-white w-full bg-red-50 absolute bottom-0">
+                    <div className="text-lg font-medium absolute bottom-1 right-3">
+                      {formatInputCurrency(products.price)}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ))}

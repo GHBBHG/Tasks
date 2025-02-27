@@ -1,3 +1,4 @@
+import { Category } from "../entities/Category";
 import { Ecommerce } from "../entities/Ecommerce";
 import { Projects } from "../entities/Projects";
 import { Task } from "../entities/Task";
@@ -71,5 +72,25 @@ export const ecommerceService = {
     const response = await fetch(import.meta.env.VITE_STORE_API_URL);
     const data: Ecommerce[] = await response.json();
     return data;
+  },
+};
+
+export const categoryService = {
+  async fetchCategory(): Promise<Category[]> {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/category`);
+    const data: Category[] = await response.json();
+    return data;
+  },
+
+  async createCategory(attributes: Omit<Category, "id">): Promise<Category> {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/category`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(attributes),
+    });
+    const newCategory: Category = await response.json();
+    return newCategory;
   },
 };
