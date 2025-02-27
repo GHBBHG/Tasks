@@ -77,7 +77,7 @@ export const TasksByProjects = () => {
           Adicionar projeto
         </div>
         <div
-          className={`${isSuccessHidden} bg-liveGreen text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
+          className={`${isSuccessHidden} bg-live_green text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
         >
           Tarefa criada com sucesso!
         </div>

@@ -93,7 +93,7 @@ export function Tasks() {
           Adicionar tarefa
         </div>
         <div
-          className={`${isHidden} bg-liveGreen text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
+          className={`${isHidden} bg-live_green text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
         >
           Tarefa criada com sucesso!
         </div>
