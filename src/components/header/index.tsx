@@ -18,34 +18,37 @@ export const Header = () => {
         <div className="w-1/2 p-8 text-4xl font-medium">GHB</div>
 
         <div className="flex text-left justify-end w-1/2 p-8 text-base gap-8 pr-12 sm:hidden">
-          <Link className="hover:text-sky-300 duration-100 ease-in" to="/">
+          <Link
+            className="border-b-[1px] px-1 hover:border-sky-300 hover:text-sky-300 duration-100 ease-in"
+            to="/"
+          >
             Início
           </Link>
 
-          <Link
-            className="hover:text-sky-300 duration-100 ease-in"
+          <Link 
+            className="border-b-[1px] px-1 hover:border-sky-300 hover:text-sky-300 duration-100 ease-in"
             to="/e-commerce"
           >
             Loja
           </Link>
 
           <Link
-            className="hover:text-sky-300 duration-100 ease-in"
-            to="/tarefas/projetos"
+            className="border-b-[1px] px-1 hover:border-sky-300 hover:text-sky-300 duration-100 ease-in"
+            to="/tasks-by-projects"
           >
             Projetos
           </Link>
 
           <Link
-            className="hover:text-sky-300 duration-100 ease-in"
-            to="/tarefas"
+            className="border-b-[1px] px-1 hover:border-sky-300 hover:text-sky-300 duration-100 ease-in"
+            to="/tasks"
           >
             Tarefas
           </Link>
 
           <Link
-            className="hover:text-sky-300 duration-100 ease-in"
-            to="/tarefas/arquivadas"
+            className="border-b-[1px] px-1 hover:border-sky-300 hover:text-sky-300 duration-100 ease-in"
+            to="/completed-tasks"
           >
             Arquivadas
           </Link>
@@ -67,19 +70,19 @@ export const Header = () => {
           </div>
         </Link>
 
-        <Link to="/tarefas/projetos">
+        <Link to="/tasks-by-projects">
           <div className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3">
             Projetos
           </div>
         </Link>
 
-        <Link to="/tarefas">
+        <Link to="/tasks">
           <div className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3">
             Tarefas
           </div>
         </Link>
 
-        <Link to="/tarefas/arquivadas">
+        <Link to="/completed-tasks">
           <div className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3">
             Arquivadas
           </div>

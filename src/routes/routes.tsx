@@ -4,7 +4,7 @@ import { Home } from "../pages/home";
 import { Tasks } from "../pages/tasks";
 import { TasksByProjects } from "../pages/tasksByProjects";
 import { Projects } from "../pages/projects";
-import { ECommerce } from "../pages/ecommerce";
+import { ECommerce } from "../pages/ecommerce"
 import { Wrapper } from "../components/Wrapper";
 
 export const Routes = createBrowserRouter([
@@ -17,29 +17,25 @@ export const Routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "tarefas",
+        path: "tasks",
         element: <Tasks />,
       },
       {
-        path: "/tarefas/arquivadas",
+        path: "/completed-tasks",
         element: <CompletedTasks />,
       },
       {
-        path: "/tarefas/projetos",
+        path: "/tasks-by-projects",
         element: <TasksByProjects />,
       },
       {
-        path: "/tarefas/projetos/:projeto",
+        path: "/projects/:projeto",
         element: <Projects />,
       },
       {
         path: "/e-commerce",
         element: <ECommerce />,
       },
-      // {
-      //   path: "/e-commerce/categoria/:categoria",
-      //   element: <ECommerce />,
-      // },
     ],
   },
 ]);

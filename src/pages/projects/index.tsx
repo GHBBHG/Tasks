@@ -16,7 +16,7 @@ export const Projects = () => {
       </div>
       <div className="flex justify-end mx-auto w-[90%] my-10 ">
         <Link
-          to="/tarefas/projetos"
+          to="/tasks-by-projects"
           className="text-center text-white bg-sky-400 px-6 py-2 font-semibold text-md rounded-2xl hover:bg-sky-500 cursor-pointer"
         >
           Voltar
