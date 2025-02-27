@@ -83,7 +83,7 @@
     {
       "id": "7b99",
       "title": "Criar um e-comerce ",
-      "description": "No projeto das tasks criar uma tela que busque uma api fake para criar um e-comerce falso",
+      "description": "No projeto GHB criar uma tela que busque uma api fake para criar um e-comerce falso",
       "archive": "1",
       "projects": "GHB",
       "branch": "ecomerce",
@@ -179,9 +179,7 @@
         "id": 1,
         "name": "Roupas"
       },
-      "images": [
-        "https://i.imgur.com/mp3rUty.jpeg"
-      ]
+      "images": ["https://i.imgur.com/mp3rUty.jpeg"]
     },
     {
       "id": "8",
@@ -192,9 +190,7 @@
         "id": 1,
         "name": "Roupas"
       },
-      "images": [
-        "https://i.imgur.com/9LFjwpI.jpeg"
-      ]
+      "images": ["https://i.imgur.com/9LFjwpI.jpeg"]
     },
     {
       "id": "9",
@@ -205,9 +201,7 @@
         "id": 1,
         "name": "Roupas"
       },
-      "images": [
-        "https://i.imgur.com/R3iobJA.jpeg"
-      ]
+      "images": ["https://i.imgur.com/R3iobJA.jpeg"]
     },
     {
       "id": "10",
@@ -218,9 +212,7 @@
         "id": 1,
         "name": "Roupas"
       },
-      "images": [
-        "https://i.imgur.com/wXuQ7bm.jpeg"
-      ]
+      "images": ["https://i.imgur.com/wXuQ7bm.jpeg"]
     },
     {
       "id": "11",
@@ -231,9 +223,7 @@
         "id": 1,
         "name": "Roupas"
       },
-      "images": [
-        "https://i.imgur.com/cBuLvBi.jpeg"
-      ]
+      "images": ["https://i.imgur.com/cBuLvBi.jpeg"]
     },
     {
       "id": "12",
@@ -244,9 +234,7 @@
         "id": 1,
         "name": "Roupas"
       },
-      "images": [
-        "https://i.imgur.com/KeqG6r4.jpeg"
-      ]
+      "images": ["https://i.imgur.com/KeqG6r4.jpeg"]
     },
     {
       "id": "14",
@@ -257,9 +245,7 @@
         "id": 1,
         "name": "Roupas"
       },
-      "images": [
-        "https://i.imgur.com/eGOUveI.jpeg"
-      ]
+      "images": ["https://i.imgur.com/eGOUveI.jpeg"]
     },
     {
       "id": "15",
@@ -270,9 +256,7 @@
         "id": 1,
         "name": "Roupas"
       },
-      "images": [
-        "https://i.imgur.com/axsyGpD.jpeg"
-      ]
+      "images": ["https://i.imgur.com/axsyGpD.jpeg"]
     },
     {
       "id": "16",
@@ -283,9 +267,7 @@
         "id": 1,
         "name": "Roupas"
       },
-      "images": [
-        "https://i.imgur.com/Y54Bt8J.jpeg"
-      ]
+      "images": ["https://i.imgur.com/Y54Bt8J.jpeg"]
     },
     {
       "id": "17",
@@ -296,9 +278,7 @@
         "id": 1,
         "name": "Roupas"
       },
-      "images": [
-        "https://i.imgur.com/9DqEOV5.jpeg"
-      ]
+      "images": ["https://i.imgur.com/9DqEOV5.jpeg"]
     },
     {
       "id": "19",
@@ -309,9 +289,7 @@
         "id": 2,
         "name": "Eletronicos"
       },
-      "images": [
-        "https://i.imgur.com/yVeIeDa.jpeg"
-      ]
+      "images": ["https://i.imgur.com/yVeIeDa.jpeg"]
     },
     {
       "id": "20",
@@ -322,9 +300,7 @@
         "id": 2,
         "name": "Eletronicos"
       },
-      "images": [
-        "https://i.imgur.com/SolkFEB.jpeg"
-      ]
+      "images": ["https://i.imgur.com/SolkFEB.jpeg"]
     },
     {
       "id": "21",
@@ -335,9 +311,7 @@
         "id": 2,
         "name": "Eletronicos"
       },
-      "images": [
-        "https://i.imgur.com/keVCVIa.jpeg"
-      ]
+      "images": ["https://i.imgur.com/keVCVIa.jpeg"]
     },
     {
       "id": "22",
@@ -348,9 +322,7 @@
         "id": 2,
         "name": "Eletronicos"
       },
-      "images": [
-        "https://i.imgur.com/w3Y8NwQ.jpeg"
-      ]
+      "images": ["https://i.imgur.com/w3Y8NwQ.jpeg"]
     },
     {
       "id": "23",
@@ -361,9 +333,7 @@
         "id": 2,
         "name": "Eletronicos"
       },
-      "images": [
-        "https://i.imgur.com/OKn1KFI.jpeg"
-      ]
+      "images": ["https://i.imgur.com/OKn1KFI.jpeg"]
     },
     {
       "id": "25",
@@ -374,9 +344,7 @@
         "id": 2,
         "name": "Eletronicos"
       },
-      "images": [
-        "https://i.imgur.com/YaSqa06.jpeg"
-      ]
+      "images": ["https://i.imgur.com/YaSqa06.jpeg"]
     },
     {
       "id": "26",
@@ -387,9 +355,7 @@
         "id": 2,
         "name": "Eletronicos"
       },
-      "images": [
-        "https://i.imgur.com/yb9UQKL.jpeg"
-      ]
+      "images": ["https://i.imgur.com/yb9UQKL.jpeg"]
     },
     {
       "id": "28",
@@ -400,9 +366,7 @@
         "id": 3,
         "name": "Moveis"
       },
-      "images": [
-        "https://i.imgur.com/Qphac99.jpeg"
-      ]
+      "images": ["https://i.imgur.com/Qphac99.jpeg"]
     },
     {
       "id": "29",
@@ -413,9 +377,7 @@
         "id": 3,
         "name": "Moveis"
       },
-      "images": [
-        "https://i.imgur.com/DMQHGA0.jpeg"
-      ]
+      "images": ["https://i.imgur.com/DMQHGA0.jpeg"]
     },
     {
       "id": "30",
@@ -426,9 +388,7 @@
         "id": 3,
         "name": "Moveis"
       },
-      "images": [
-        "https://i.imgur.com/NWIJKUj.jpeg"
-      ]
+      "images": ["https://i.imgur.com/NWIJKUj.jpeg"]
     },
     {
       "id": "31",
@@ -439,9 +399,7 @@
         "id": 3,
         "name": "Moveis"
       },
-      "images": [
-        "https://i.imgur.com/6wkyyIN.jpeg"
-      ]
+      "images": ["https://i.imgur.com/6wkyyIN.jpeg"]
     },
     {
       "id": "32",
@@ -452,9 +410,7 @@
         "id": 3,
         "name": "Moveis"
       },
-      "images": [
-        "https://i.imgur.com/4lTaHfF.jpeg"
-      ]
+      "images": ["https://i.imgur.com/4lTaHfF.jpeg"]
     },
     {
       "id": "33",
@@ -465,9 +421,7 @@
         "id": 3,
         "name": "Moveis"
       },
-      "images": [
-        "https://i.imgur.com/3oXNBst.jpeg"
-      ]
+      "images": ["https://i.imgur.com/3oXNBst.jpeg"]
     },
     {
       "id": "34",
@@ -478,9 +432,7 @@
         "id": 3,
         "name": "Moveis"
       },
-      "images": [
-        "https://i.imgur.com/3dU0m72.jpeg"
-      ]
+      "images": ["https://i.imgur.com/3dU0m72.jpeg"]
     },
     {
       "id": "35",
@@ -491,9 +443,7 @@
         "id": 4,
         "name": "Calçados"
       },
-      "images": [
-        "https://i.imgur.com/qNOjJje.jpeg"
-      ]
+      "images": ["https://i.imgur.com/qNOjJje.jpeg"]
     },
     {
       "id": "36",
@@ -504,9 +454,7 @@
         "id": 4,
         "name": "Calçados"
       },
-      "images": [
-        "https://i.imgur.com/62gGzeF.jpeg"
-      ]
+      "images": ["https://i.imgur.com/62gGzeF.jpeg"]
     },
     {
       "id": "37",
@@ -517,9 +465,7 @@
         "id": 4,
         "name": "Calçados"
       },
-      "images": [
-        "https://i.imgur.com/9qrmE1b.jpeg"
-      ]
+      "images": ["https://i.imgur.com/9qrmE1b.jpeg"]
     },
     {
       "id": "38",
@@ -530,9 +476,7 @@
         "id": 4,
         "name": "Calçados"
       },
-      "images": [
-        "https://i.imgur.com/hKcMNJs.jpeg"
-      ]
+      "images": ["https://i.imgur.com/hKcMNJs.jpeg"]
     },
     {
       "id": "39",
@@ -543,9 +487,7 @@
         "id": 4,
         "name": "Calçados"
       },
-      "images": [
-        "https://i.imgur.com/mcW42Gi.jpeg"
-      ]
+      "images": ["https://i.imgur.com/mcW42Gi.jpeg"]
     },
     {
       "id": "40",
@@ -556,9 +498,7 @@
         "id": 4,
         "name": "Calçados"
       },
-      "images": [
-        "https://i.imgur.com/npLfCGq.jpeg"
-      ]
+      "images": ["https://i.imgur.com/npLfCGq.jpeg"]
     },
     {
       "id": "41",
@@ -569,9 +509,7 @@
         "id": 4,
         "name": "Calçados"
       },
-      "images": [
-        "https://i.imgur.com/HqYqLnW.jpeg"
-      ]
+      "images": ["https://i.imgur.com/HqYqLnW.jpeg"]
     },
     {
       "id": "42",
@@ -582,9 +520,7 @@
         "id": 4,
         "name": "Calçados"
       },
-      "images": [
-        "https://i.imgur.com/AzAY4Ed.jpeg"
-      ]
+      "images": ["https://i.imgur.com/AzAY4Ed.jpeg"]
     },
     {
       "id": "43",
@@ -595,9 +531,7 @@
         "id": 4,
         "name": "Calçados"
       },
-      "images": [
-        "https://i.imgur.com/Au8J9sX.jpeg"
-      ]
+      "images": ["https://i.imgur.com/Au8J9sX.jpeg"]
     },
     {
       "id": "45",
@@ -608,9 +542,7 @@
         "id": 5,
         "name": "Mobilidade"
       },
-      "images": [
-        "https://i.imgur.com/BG8J0Fj.jpg"
-      ]
+      "images": ["https://i.imgur.com/BG8J0Fj.jpg"]
     },
     {
       "id": "46",
@@ -621,9 +553,7 @@
         "id": 5,
         "name": "Mobilidade"
       },
-      "images": [
-        "https://i.imgur.com/Ex5x3IU.jpg"
-      ]
+      "images": ["https://i.imgur.com/Ex5x3IU.jpg"]
     },
     {
       "id": "47",
@@ -634,9 +564,7 @@
         "id": 5,
         "name": "Variados"
       },
-      "images": [
-        "https://i.imgur.com/xPDwUb3.jpg"
-      ]
+      "images": ["https://i.imgur.com/xPDwUb3.jpg"]
     },
     {
       "id": "48",
@@ -647,9 +575,7 @@
         "id": 5,
         "name": "Variados"
       },
-      "images": [
-        "https://i.imgur.com/jVfoZnP.jpg"
-      ]
+      "images": ["https://i.imgur.com/jVfoZnP.jpg"]
     },
     {
       "id": "49",
@@ -660,9 +586,7 @@
         "id": 5,
         "name": "Variados"
       },
-      "images": [
-        "https://i.imgur.com/Lqaqz59.jpg"
-      ]
+      "images": ["https://i.imgur.com/Lqaqz59.jpg"]
     },
     {
       "id": "50",
@@ -673,9 +597,7 @@
         "id": 5,
         "name": "Variados"
       },
-      "images": [
-        "https://i.imgur.com/0qQBkxX.jpg"
-      ]
+      "images": ["https://i.imgur.com/0qQBkxX.jpg"]
     }
   ]
 }
