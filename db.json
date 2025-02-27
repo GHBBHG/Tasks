@@ -56,7 +56,7 @@
       "description": "Criar estrutura nova para viabilizar cada projeto em seu lugar",
       "archive": "1",
       "projects": "GHB",
-      "branch": "main",
+      "branch": "staging",
       "status": "done",
       "priority": "media"
     },
@@ -76,7 +76,7 @@
       "description": "Atualizar todos os documentos dentro do projeto para o novo formato de estrutura",
       "archive": "1",
       "projects": "GHB",
-      "branch": "main",
+      "branch": "staging",
       "status": "done",
       "priority": "baixa"
     },
@@ -86,7 +86,7 @@
       "description": "No projeto GHB criar uma tela que busque uma api fake para criar um e-comerce falso",
       "archive": "1",
       "projects": "GHB",
-      "branch": "ecomerce",
+      "branch": "feat/e-commerce",
       "status": "done",
       "priority": "baixa"
     },
@@ -96,7 +96,7 @@
       "description": "criar uma forma de: em cada projeto ter areas ao qual será mechida ao qual o nome dado de \"tela\"",
       "archive": "0",
       "projects": "GHB",
-      "branch": "new-tela-projeto",
+      "branch": "feat/new-tela-projeto",
       "status": "todo",
       "priority": "media"
     },
@@ -106,7 +106,7 @@
       "description": "Organizar documentação do projeto com base no que sabe",
       "archive": "0",
       "projects": "GHB",
-      "branch": "main",
+      "branch": "staging",
       "status": "doing",
       "priority": "alta"
     },
