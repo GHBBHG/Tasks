@@ -4,20 +4,50 @@ import { useEcommerce } from "../../hooks/useEcommerce";
 import { formatInputCurrency } from "../../utils/validators";
 import { useCategory } from "../../hooks/useCategory";
 import { Category } from "../../entities/Category";
+import { Link } from "react-router-dom";
+
+type ArrayProductsCategory = Record<
+  number,
+  { id: number; title: string; image: string; price: number; category: string }
+>;
 
 export const ECommerce = () => {
+  let arrayProductsCategory: ArrayProductsCategory = {};
   const { ecommerce } = useEcommerce();
   const { category } = useCategory();
+  let indexTest = 0;
 
   const arrayCategorys: Category[] = category.filter((category) => category.id);
   const arrayProducts: Ecommerce[] = ecommerce.filter((product) => product.id);
+
+  arrayCategorys.map((category) => {
+    const arrayProduct: Ecommerce[] = ecommerce.filter(
+      (product) => product.category.name === category.name
+    );
+    arrayProduct.map((product) => {
+      if (indexTest < 4) {
+        arrayProductsCategory = {
+          ...arrayProductsCategory,
+          [product.id]: {
+            id: product.id,
+            title: product.title,
+            image: product.images[0],
+            price: product.price,
+            category: product.category.name,
+          },
+        };
+      }
+      indexTest++;
+    });
+    indexTest = 0;
+  });
 
   return (
     <div>
       <div className="flex w-full justify-center items-center">
         <img
           src="/assets/banner-home-e-commerce.png"
-          className="w-60% rounded-md p-20 md:p-8"
+          className="w-55% rounded-md p-20 md:p-8"
         />
       </div>
 
@@ -33,33 +63,53 @@ export const ECommerce = () => {
 
         <Menu color="white" width={50} height={50} className="cursor-pointer" />
       </div>
-      <div className="w-[92%] mx-auto">
+      <div className="w-[88%] mx-auto mb-32">
         {arrayCategorys.map((category) => (
           <div key={category.id}>
-            <div className="flex text-3xl font-semibold text-white py-12">
+            <div className="flex text-4xl font-medium text-white py-12">
               {category.name}
             </div>
-            <div className="flex w-[90%] gap-20 mx-auto text-white overflow-auto">
-              {arrayProducts.map((products) => (
-                <div
-                  className="w-[500px] bg-faint_bg_gray block rounded-md relative"
-                  key={products.id}
-                >
-                  <div className="w-[300px] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 m-4">
-                    <img src={products.images[0]} className="rounded-md" />
-                  </div>
+            <div className="flex w-[86%] mx-auto text-white gap-20">
+              {arrayProducts.map((products) =>
+                products.category.name === category.name &&
+                arrayProductsCategory[products.id] ? (
+                  <div
+                    className="w-[300px] bg-faint_bg_gray block rounded-md relative"
+                    key={arrayProductsCategory[products.id].id}
+                  >
+                    <div className="w-[270px] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 m-4">
+                      <img
+                        src={arrayProductsCategory[products.id].image}
+                        className="rounded-md"
+                      />
+                    </div>
 
-                  <div className="text-white pt-1 px-4 mb-8 w-[90%]">
-                    <div className="text-lg font-medium">{products.title}</div>
-                  </div>
+                    <div className="text-white pt-1 px-4 mb-8 w-[90%]">
+                      <div className="text-md font-medium">
+                        {arrayProductsCategory[products.id].title}
+                      </div>
+                    </div>
 
-                  <div className="text-white w-full bg-red-50 absolute bottom-0">
-                    <div className="text-lg font-medium absolute bottom-1 right-3">
-                      {formatInputCurrency(products.price)}
+                    <div className="text-white w-full bg-red-50 absolute bottom-0">
+                      <div className="text-lg font-medium absolute bottom-1 right-3">
+                        {formatInputCurrency(
+                          arrayProductsCategory[products.id].price
+                        )}
+                      </div>
                     </div>
                   </div>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <div className="w-full flex justify-center text-white pt-16 font-medium text-md">
+              {" "}
+              <Link to={`/e-commerce/categoria/${category.name}`}>
+                <div className="hover:underline cursor-pointer">
+                  Ver categoria
                 </div>
-              ))}
+              </Link>
             </div>
           </div>
         ))}

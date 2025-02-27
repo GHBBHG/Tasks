@@ -172,27 +172,33 @@
   "category": [
     {
       "id": "0",
-      "name": "Roupas"
+      "name": "Roupas",
+      "discount": "0"
     },
     {
       "id": "1",
-      "name": "Eletronicos"
+      "name": "Eletronicos",
+      "discount": "0"
     },
     {
       "id": "2",
-      "name": "Moveis"
+      "name": "Moveis",
+      "discount": "0"
     },
     {
       "id": "3",
-      "name": "Calçados"
+      "name": "Calçados",
+      "discount": "0"
     },
     {
       "id": "4",
-      "name": "Mobilidade"
+      "name": "Mobilidade",
+      "discount": "0"
     },
     {
       "id": "5",
-      "name": "Variados"
+      "name": "Variados",
+      "discount": "0"
     }
   ],
   "e-commerce": [

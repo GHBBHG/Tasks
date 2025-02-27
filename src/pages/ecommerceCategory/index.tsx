@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import { Ecommerce } from "../../entities/Ecommerce";
 import { useEcommerce } from "../../hooks/useEcommerce";
 import { ValuesProduct } from "../../components/valuesProduct";
+import { useParams } from "react-router-dom";
 
 export const ECommerceCategory = () => {
+  const { categoria } = useParams();
   const { ecommerce } = useEcommerce();
   const [showModal, setShowModal] = useState("hidden");
   const [urlImage, setUrlImage] = useState("");
-  const arrayProducts: Ecommerce[] = ecommerce.filter((product) => product.id);
+  const arrayProducts: Ecommerce[] = ecommerce.filter(
+    (product) => product.category.name === categoria
+  );
 
   useEffect(() => {
     if (urlImage) setShowModal("");
@@ -15,6 +19,7 @@ export const ECommerceCategory = () => {
 
   return (
     <div className="block w-full py-12 text-white">
+      <div className="px-20 py-12 text-5xl font-medium">{categoria}</div>
       {arrayProducts.map((products) => (
         <div
           className="w-[85%] mx-auto bg-neutral-800 p-2 my-8 flex rounded-md"
@@ -28,11 +33,10 @@ export const ECommerceCategory = () => {
             />
           </div>
           <div className="w-[60%] text-white p-4">
-            <div className="text-gray-400 text-sm">
-              {products.category.name}
-            </div>
             <div className="text-xl font-medium">{products.title}</div>
-            <div className="text-base">{products.description}</div>
+            <div className="text-base text-gray-400">
+              {products.description}
+            </div>
           </div>
           <div className="w-[25%] flex justify-center items-center">
             <ValuesProduct
