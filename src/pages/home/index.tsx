@@ -20,7 +20,7 @@ export function Home() {
             distribua responsabilidades e evite surpresas no caminho. Com
             planejamento certo, cada tarefa concluída é um passo mais perto do
             sucesso! Afinal, projetos bem estruturados tornam qualquer meta mais
-            alcançável
+            alcançável.
           </p>
         </div>
       </div>
