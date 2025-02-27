@@ -17,25 +17,29 @@ export const Routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "tasks",
+        path: "tarefas",
         element: <Tasks />,
       },
       {
-        path: "/completed-tasks",
+        path: "/tarefas/arquivadas",
         element: <CompletedTasks />,
       },
       {
-        path: "/tasks-by-projects",
+        path: "/tarefas/projetos",
         element: <TasksByProjects />,
       },
       {
-        path: "/projects/:projeto",
+        path: "/tarefas/projetos/:projeto",
         element: <Projects />,
       },
       {
         path: "/e-commerce",
         element: <ECommerce />,
       },
+      // {
+      //   path: "/e-commerce/categoria/:categoria",
+      //   element: <ECommerce />,
+      // },
     ],
   },
 ]);
