@@ -34,7 +34,7 @@ export function ProjectsList() {
                 Sem Tarefas!
               </div>
             ) : (
-              <Link to={`/projects/${project.name}`}>
+              <Link to={`/tarefas/projetos/${project.name}`}>
                 <div className="w-28 p-2 text-center bg-sky-400 text-sm rounded-lg hover:bg-sky-500 cursor-pointer">
                   Ver {taskCountByProject[project.id].qtTasks}{" "}
                   {taskCountByProject[project.id].qtTasks === 1
