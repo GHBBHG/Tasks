@@ -3,15 +3,12 @@ import { z } from "zod";
 import { useProject } from "../../hooks/useProject";
 import { ProjectsList } from "../../components/projectsList";
 import { PlusIcon, X } from "lucide-react";
+import { sucess } from "../../components/sweetAlert/sucess";
 
 export const TasksByProjects = () => {
   const { createProject } = useProject();
-
   const [showModal, setShowModal] = useState("hidden");
-  const [isSuccessHidden, setIsSuccessHidden] = useState("hidden");
   const [formData, setFormData] = useState({ name: "" });
-
-  const reloadProjects = () => location.reload();
   const CreateProjectSchema = z.object({
     name: z.string(),
   });
@@ -26,6 +23,8 @@ export const TasksByProjects = () => {
     }));
   };
 
+  const reloadNewProject = () => location.reload();
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
@@ -33,8 +32,12 @@ export const TasksByProjects = () => {
     const response = await createProject(projectData);
 
     if (response != null) {
-      setTimeout(reloadProjects, 1500);
-      setIsSuccessHidden("");
+      setShowModal("hidden");
+      setTimeout(reloadNewProject, 1500);
+      sucess.fire({
+        title: "Seu projeto foi criado",
+        icon: "success",
+      });
       return;
     }
   };
@@ -48,6 +51,7 @@ export const TasksByProjects = () => {
 
         <div className="flex justify-end mx-auto w-[85%] ">
           <button
+            title="Novo projeto"
             className="text-5xl text-white"
             onClick={() => setShowModal("")}
           >
@@ -76,11 +80,6 @@ export const TasksByProjects = () => {
         </div>
         <div className="text-4xl sm:text-2xl font-medium text-white w-full text-left mt-2 mb-8 ml-12 sm:ml-0 sm:text-center">
           Adicionar projeto
-        </div>
-        <div
-          className={`${isSuccessHidden} bg-live_green text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
-        >
-          Tarefa criada com sucesso!
         </div>
         <div className="w-[90%] mx-auto">
           <form onSubmit={handleSubmit}>

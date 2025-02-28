@@ -5,6 +5,7 @@ import { useTasks } from "../../hooks/useTasks";
 import { useProject } from "../../hooks/useProject";
 import { Projects } from "../../entities/Projects";
 import { PlusIcon, X } from "lucide-react";
+import { sucess } from "../../components/sweetAlert/sucess";
 
 const CreateTaskSchema = z.object({
   title: z.string(),
@@ -18,7 +19,6 @@ const CreateTaskSchema = z.object({
 
 export function Tasks() {
   const [showModal, setShowModal] = useState("hidden");
-  const [isHidden, setIsHidden] = useState("hidden");
   const { createTask } = useTasks();
   const { project } = useProject();
   const listProjects: Projects[] = project?.filter((a) => a.name != null) ?? [];
@@ -51,17 +51,19 @@ export function Tasks() {
     }));
   };
 
-  const reloadNewTask = () => {
-    location.reload();
-  };
+  const reloadNewTask = () => location.reload();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     const taskData = CreateTaskSchema.parse(formData);
     const response = await createTask(taskData);
     if (response != null) {
+      setShowModal("hidden");
       setTimeout(reloadNewTask, 1500);
-      setIsHidden("");
+      sucess.fire({
+        title: "Sua tarefa foi criada",
+        icon: "success",
+      });
     }
   };
 
@@ -72,7 +74,11 @@ export function Tasks() {
           Tarefas
         </div>
         <div className="flex justify-end mx-auto w-[90%] mb-10 ">
-          <button className="text-5xl text-white" onClick={abrirModal}>
+          <button
+            title="Nova tarefa"
+            className="text-5xl text-white"
+            onClick={abrirModal}
+          >
             <PlusIcon size={40} />
           </button>
         </div>
@@ -92,11 +98,6 @@ export function Tasks() {
         </div>
         <div className="text-4xl sm:text-2xl font-medium text-white w-full text-left mt-2 mb-8 ml-12 sm:ml-0 sm:text-center">
           Adicionar tarefa
-        </div>
-        <div
-          className={`${isHidden} bg-live_green text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
-        >
-          Tarefa criada com sucesso!
         </div>
         <div className="w-[90%] mx-auto">
           <form onSubmit={handleSubmit}>

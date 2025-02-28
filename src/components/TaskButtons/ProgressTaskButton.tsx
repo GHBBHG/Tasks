@@ -1,3 +1,4 @@
+import { BookmarkCheck, Play } from "lucide-react";
 import { useTasks } from "../../hooks/useTasks";
 
 interface ProgressTaskButtonProps {
@@ -16,17 +17,19 @@ export function ProgressTaskButton({ id, status }: ProgressTaskButtonProps) {
     <div className="m-2">
       {status === "todo" ? (
         <button
+          title="Iniciar"
           className="bg-sky-600 p-2 px-4 rounded-lg hover:bg-sky-700 mb-2"
           onClick={handleUpdate}
         >
-          Iniciar
+          <Play size={24} />
         </button>
       ) : (
         <button
+          title="Finalizar"
           className="bg-green-600 p-2 px-4 rounded-lg hover:bg-green-700 mb-2"
           onClick={handleUpdate}
         >
-          Concluir
+          <BookmarkCheck size={24} />
         </button>
       )}
     </div>

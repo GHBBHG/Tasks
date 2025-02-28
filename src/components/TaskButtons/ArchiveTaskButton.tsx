@@ -1,3 +1,4 @@
+import { Archive } from "lucide-react";
 import { useTasks } from "../../hooks/useTasks";
 
 interface ArchiveTaskButtonProps {
@@ -14,10 +15,11 @@ export function ArchiveTaskButton({ id }: ArchiveTaskButtonProps) {
   return (
     <div className="m-2">
       <button
+        title="Arquivar"
         className="bg-orange-600 p-2 px-4 rounded-lg hover:bg-orange-700 mb-2"
         onClick={handleArchive}
       >
-        Arquivar
+        <Archive size={24} />
       </button>
     </div>
   );

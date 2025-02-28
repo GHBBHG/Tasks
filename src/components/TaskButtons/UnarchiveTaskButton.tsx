@@ -1,3 +1,4 @@
+import { ArchiveRestore } from "lucide-react";
 import { useTasks } from "../../hooks/useTasks";
 
 interface UnarchiveTaskButtonProps {
@@ -14,10 +15,11 @@ export function UnarchiveTaskButton({ id }: UnarchiveTaskButtonProps) {
   return (
     <div className="m-2">
       <button
+        title="Desarquivar"
         className="bg-lime-600 p-2 px-4 rounded-lg hover:bg-lime-700 mb-2"
         onClick={handleUnarchive}
       >
-        Desarquivar
+        <ArchiveRestore size={24} />
       </button>
     </div>
   );
