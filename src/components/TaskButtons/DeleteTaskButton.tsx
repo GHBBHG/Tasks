@@ -1,6 +1,6 @@
 import { Trash2 } from "lucide-react";
 import { useTasks } from "../../hooks/useTasks";
-import { confirmarExcluirTarefa } from "../sweetAlert/confirmarExcluirTarefa";
+import { confirmarExcluir } from "../sweetAlert/confirmarExcluir";
 
 interface DeleteTaskButtonProps {
   id: string;
@@ -11,7 +11,7 @@ export function DeleteTaskButton({ id, name }: DeleteTaskButtonProps) {
   const { deleteTask } = useTasks();
 
   const handleDelete = () => {
-    confirmarExcluirTarefa
+    confirmarExcluir
       .fire({
         title: `Excluir a tarefa "${name}" ?`,
         icon: "warning",
@@ -23,7 +23,7 @@ export function DeleteTaskButton({ id, name }: DeleteTaskButtonProps) {
       .then((result) => {
         if (result.isConfirmed) {
           deleteTask(id);
-          confirmarExcluirTarefa.fire({
+          confirmarExcluir.fire({
             title: "Sua tarefa foi excluída",
             icon: "success",
           });

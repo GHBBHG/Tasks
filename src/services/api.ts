@@ -65,6 +65,12 @@ export const projectService = {
     const newProject: Projects = await response.json();
     return newProject;
   },
+
+  async deleteProject(id: string): Promise<void> {
+    await fetch(`${import.meta.env.VITE_API_URL_PROJECT}/${id}`, {
+      method: "DELETE",
+    });
+  },
 };
 
 export const ecommerceService = {
