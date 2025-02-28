@@ -43,7 +43,7 @@ export const ValuesProduct = ({ price, categoria }: ValuesProductProps) => {
           price * (quantityOfProduct > 0 ? quantityOfProduct : 1)
         )}
       </div>
-      <div className="flex mt-8 justify-center">
+      <div className="flex mt-8 sm:mt-4 justify-center">
         <div
           className="text-4xl font-bold rounded-l-full w-12 h-12 flex items-center justify-center cursor-pointer bg-red-500 select-none"
           onClick={() => {

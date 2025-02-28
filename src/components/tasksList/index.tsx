@@ -16,7 +16,7 @@ export function TasksList() {
     [];
 
   return (
-    <div className="flex mx-[4%] pb-20">
+    <div className="flex sm:block flex-grow gap-8 w-[90%] mx-auto">
       <Card
         tasks={tasksTodo}
         nameTask={"A fazer"}

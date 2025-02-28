@@ -2,6 +2,7 @@ import { FormEventHandler, useState } from "react";
 import { z } from "zod";
 import { useProject } from "../../hooks/useProject";
 import { ProjectsList } from "../../components/projectsList";
+import { PlusIcon, X } from "lucide-react";
 
 export const TasksByProjects = () => {
   const { createProject } = useProject();
@@ -40,8 +41,8 @@ export const TasksByProjects = () => {
 
   return (
     <>
-      <div className="pb-80">
-        <div className="pl-40 pt-10 pb-0 text-5xl font-medium text-slate-200">
+      <div className="pb-28">
+        <div className="pl-40 pt-10 pb-0 text-5xl sm:pl-8  font-medium text-slate-200">
           Projetos
         </div>
 
@@ -50,11 +51,11 @@ export const TasksByProjects = () => {
             className="text-5xl text-white"
             onClick={() => setShowModal("")}
           >
-            +
+            <PlusIcon size={40} />
           </button>
         </div>
 
-        <div className="flex flex-wrap gap-6 w-full min-h-60 mx-auto items-center justify-center p-20">
+        <div className="flex flex-wrap gap-6 w-full min-h-60 mx-auto items-center justify-center p-20 sm:p-8">
           <ProjectsList />
         </div>
       </div>
@@ -63,17 +64,17 @@ export const TasksByProjects = () => {
         onClick={() => setShowModal("hidden")}
       ></div>
       <div
-        className={`${showModal} bg-neutral-800 rounded-xl mx-auto w-[50%] h-[60%] z-[10001] fixed top-[20%] left-[25%] opacity-[1] overflow-y-auto overflow-x-hidden`}
+        className={`${showModal} bg-neutral-800 rounded-xl mx-auto w-[50%] sm:w-[90%] h-[60%] z-[10001] fixed top-[20%] left-[25%] sm:left-[5%] opacity-[1] overflow-y-auto overflow-x-hidden`}
       >
-        <div className="w-full text-right p-2 px-4 text-2xl text-white">
+        <div className="w-full flex justify-end p-2 text-2xl text-white">
           <span
             onClick={() => setShowModal("hidden")}
             className="cursor-pointer"
           >
-            X
+            <X size={30} />
           </span>
         </div>
-        <div className="text-4xl font-medium text-white w-full text-left mt-2 mb-8 mx-12">
+        <div className="text-4xl sm:text-2xl font-medium text-white w-full text-left mt-2 mb-8 ml-12 sm:ml-0 sm:text-center">
           Adicionar projeto
         </div>
         <div
