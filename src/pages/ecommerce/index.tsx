@@ -8,7 +8,13 @@ import { Link } from "react-router-dom";
 
 type ArrayProductsCategory = Record<
   number,
-  { id: number; title: string; image: string; price: number; category: string }
+  {
+    id: number;
+    title: string;
+    image: string;
+    price: number;
+    category: string;
+  }
 >;
 
 export const ECommerce = () => {
@@ -47,7 +53,7 @@ export const ECommerce = () => {
       <div className="flex w-full justify-center items-center">
         <img
           src="/assets/banner-home-e-commerce.png"
-          className="w-55% rounded-md p-20 md:p-8"
+          className="rounded-md p-20 md:p-8"
         />
       </div>
 
@@ -67,9 +73,16 @@ export const ECommerce = () => {
         {arrayCategorys.map((category) => (
           <div key={category.id}>
             <div className="flex text-4xl font-medium text-white py-12">
-              {category.name}
+              {category.name}{" "}
+              {category.discount * 100 > 0 ? (
+                <div className="flex text-live_green text-sm items-end pl-2">
+                  {category.discount * 100 + "% OFF"}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
-            <div className="flex w-[86%] mx-auto text-white gap-20">
+            <div className="flex w-[86%] mx-auto text-white justify-center gap-20">
               {arrayProducts.map((products) =>
                 products.category.name === category.name &&
                 arrayProductsCategory[products.id] ? (
@@ -84,16 +97,27 @@ export const ECommerce = () => {
                       />
                     </div>
 
-                    <div className="text-white pt-1 px-4 mb-8 w-[90%]">
+                    <div className="text-white pt-1 px-4 mb-12 w-[90%]">
                       <div className="text-md font-medium">
                         {arrayProductsCategory[products.id].title}
                       </div>
                     </div>
 
                     <div className="text-white w-full bg-red-50 absolute bottom-0">
+                      {category.discount > 0 ? (
+                        <div className="text-md absolute bottom-6 right-3 text-gray-400 line-through decoration-gray-200 decoration-1">
+                          {formatInputCurrency(
+                            arrayProductsCategory[products.id].price
+                          )}
+                        </div>
+                      ) : (
+                        ""
+                      )}
                       <div className="text-lg font-medium absolute bottom-1 right-3">
                         {formatInputCurrency(
-                          arrayProductsCategory[products.id].price
+                          arrayProductsCategory[products.id].price -
+                            arrayProductsCategory[products.id].price *
+                              category.discount
                         )}
                       </div>
                     </div>

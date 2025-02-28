@@ -41,7 +41,7 @@ export const ECommerceCategory = () => {
           <div className="w-[25%] flex justify-center items-center">
             <ValuesProduct
               price={products.price}
-              category={products.category.name}
+              categoria={products.category.name}
             />
           </div>
           <hr />
