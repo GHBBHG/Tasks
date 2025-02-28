@@ -59,20 +59,20 @@ export const ECommerce = () => {
 
       <div className="flex w-full justify-center items-center">
         <input
-          className="w-[34%] h-12 rounded-l-full bg-faint_bg_gray text-white p-4 text-xl placeholder:text-gray-400 outline-none"
+          className="w-[34%] sm:w-[70%] h-12 rounded-l-full bg-faint_bg_gray text-white p-4 text-xl placeholder:text-gray-400 outline-none"
           placeholder="Buscar produtos"
         ></input>
 
-        <button className="w-[3%] h-12 rounded-r-full bg-faint_bg_gray text-white text-xl pr-5 flex justify-end items-center">
+        <button className="w-[50px] h-12 rounded-r-full bg-faint_bg_gray text-white text-xl pr-5 flex justify-end items-center">
           <Search color="oklch(0.707 0.022 261.325)" />
         </button>
 
-        <Menu color="white" width={50} height={50} className="cursor-pointer" />
+        <Menu color="white" width={40} height={40} className="cursor-pointer" />
       </div>
       <div className="w-[88%] mx-auto mb-32">
         {arrayCategorys.map((category) => (
           <div key={category.id}>
-            <div className="flex text-4xl font-medium text-white py-12">
+            <div className="flex text-4xl sm:text-2xl font-medium text-white py-12 sm:py-8">
               {category.name}{" "}
               {category.discount * 100 > 0 ? (
                 <div className="flex text-live_green text-sm items-end pl-2">
@@ -82,15 +82,15 @@ export const ECommerce = () => {
                 ""
               )}
             </div>
-            <div className="flex w-[86%] mx-auto text-white justify-center gap-20">
+            <div className="flex w-[86%] sm:w-full mx-auto text-white justify-center sm:justify-start gap-20 sm:gap-4 overflow-auto">
               {arrayProducts.map((products) =>
                 products.category.name === category.name &&
                 arrayProductsCategory[products.id] ? (
                   <div
-                    className="w-[300px] bg-faint_bg_gray block rounded-md relative"
+                    className="w-[300px] sm:w-[138px] bg-faint_bg_gray block rounded-md relative sm:my-3"
                     key={arrayProductsCategory[products.id].id}
                   >
-                    <div className="w-[270px] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 m-4">
+                    <div className="w-[270px] sm:w-[130px] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 m-4 sm:m-1">
                       <img
                         src={arrayProductsCategory[products.id].image}
                         className="rounded-md"
@@ -98,7 +98,7 @@ export const ECommerce = () => {
                     </div>
 
                     <div className="text-white pt-1 px-4 mb-12 w-[90%]">
-                      <div className="text-md font-medium">
+                      <div className="text-md sm:text-sm font-medium">
                         {arrayProductsCategory[products.id].title}
                       </div>
                     </div>
@@ -127,7 +127,7 @@ export const ECommerce = () => {
                 )
               )}
             </div>
-            <div className="w-full flex justify-center text-white pt-16 font-medium text-md">
+            <div className="w-full flex justify-center text-white pt-16 sm:pt-6 font-medium text-md">
               {" "}
               <Link to={`/e-commerce/categoria/${category.name}`}>
                 <div className="hover:underline cursor-pointer">

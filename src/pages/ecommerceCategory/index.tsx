@@ -19,32 +19,35 @@ export const ECommerceCategory = () => {
 
   return (
     <div className="block w-full py-12 text-white">
-      <div className="px-20 py-12 text-5xl font-medium">{categoria}</div>
+      <div className="px-20 py-12 sm:py-4 text-5xl sm:text-3xl font-medium">
+        {categoria}
+      </div>
       {arrayProducts.map((products) => (
         <div
-          className="w-[85%] mx-auto bg-neutral-800 p-2 my-8 flex rounded-md"
+          className="w-[85%] mx-auto bg-neutral-800 p-2 sm:p-6 my-8 flex sm:block rounded-md"
           key={products.id}
         >
-          <div className="w-[15%] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 cursor-pointer">
+          <div className="w-[15%] sm:w-full flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 cursor-pointer">
             <img
               src={products.images[0]}
               className="w-full object-cover rounded-md"
               onClick={() => setUrlImage(products.images[0])}
             />
           </div>
-          <div className="w-[60%] text-white p-4">
-            <div className="text-xl font-medium">{products.title}</div>
-            <div className="text-base text-gray-400">
+          <div className="w-[60%] sm:w-full text-white p-4">
+            <div className="text-xl sm:text-md font-medium">
+              {products.title}
+            </div>
+            <div className="text-base sm:text-xs text-gray-400">
               {products.description}
             </div>
           </div>
-          <div className="w-[25%] flex justify-center items-center">
+          <div className="w-[25%] sm:w-full flex justify-center items-center">
             <ValuesProduct
               price={products.price}
               categoria={products.category.name}
             />
           </div>
-          <hr />
         </div>
       ))}
       <div
