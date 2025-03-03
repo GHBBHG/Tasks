@@ -12,7 +12,7 @@ export function CompletedTasksList() {
   return (
     <div className="flex flex-wrap gap-6 w-full min-h-60 mx-auto items-center justify-center">
       {tasksArchive.map((tasksArchives) => (
-        <div className="w-[480px] min-h-60 text-center rounded-lg mt-3 bg-sky-950 text-slate-100 h-">
+        <div className="w-[480px] min-h-60 text-center rounded-lg mt-3 bg-sky-950 text-slate-100 relative">
           <div className="flex text-start p-3 rounded-t-lg font-medium bg-gray-800 justify-between">
             <div>
               {tasksArchives.projects}: {tasksArchives.title}
@@ -43,12 +43,14 @@ export function CompletedTasksList() {
             <br />
           </div>
 
-          <div className="flex justify-end">
-            <UnarchiveTaskButton id={tasksArchives.id} />
-            <DeleteTaskButton
-              id={tasksArchives.id}
-              name={tasksArchives.title}
-            />
+          <div className="absolute bottom-0 right-0">
+            <div className="flex justify-end">
+              <UnarchiveTaskButton id={tasksArchives.id} />
+              <DeleteTaskButton
+                id={tasksArchives.id}
+                name={tasksArchives.title}
+              />
+            </div>
           </div>
         </div>
       ))}

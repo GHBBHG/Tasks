@@ -7,6 +7,7 @@ import { Projects } from "../pages/projects";
 import { Wrapper } from "../components/Wrapper";
 import { ECommerce } from "../pages/ecommerce";
 import { ECommerceCategory } from "../pages/ecommerceCategory";
+import { Cadastros } from "../pages/cadastros";
 
 export const Routes = createBrowserRouter([
   {
@@ -41,7 +42,10 @@ export const Routes = createBrowserRouter([
         path: "/e-commerce/categoria/:categoria",
         element: <ECommerceCategory />,
       },
-
+      {
+        path: "/cadastros",
+        element: <Cadastros />,
+      },
     ],
   },
 ]);

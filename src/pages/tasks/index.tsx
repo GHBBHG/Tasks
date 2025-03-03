@@ -4,8 +4,9 @@ import { z } from "zod";
 import { useTasks } from "../../hooks/useTasks";
 import { useProject } from "../../hooks/useProject";
 import { Projects } from "../../entities/Projects";
-import { PlusIcon, X } from "lucide-react";
+import { Archive, PlusIcon, X } from "lucide-react";
 import { sucess } from "../../components/sweetAlert/sucess";
+import { Link } from "react-router-dom";
 
 const CreateTaskSchema = z.object({
   title: z.string(),
@@ -73,7 +74,12 @@ export function Tasks() {
         <div className="pl-40 sm:pl-8 pt-10 pb-0 text-5xl font-medium text-slate-200">
           Tarefas
         </div>
-        <div className="flex justify-end mx-auto w-[90%] mb-10 ">
+        <div className="flex justify-end mx-auto w-[90%] mb-10 gap-2">
+          <Link to="/tarefas/arquivadas" className="flex items-center">
+            <button title="Tarefas arquivadas" className="text-5xl text-white">
+              <Archive size={32} />
+            </button>
+          </Link>
           <button
             title="Nova tarefa"
             className="text-5xl text-white"

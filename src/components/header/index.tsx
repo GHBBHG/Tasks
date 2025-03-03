@@ -38,9 +38,9 @@ export const Header = () => {
 
           <Link
             className="hover:text-sky-300 duration-100 ease-in"
-            to="/tarefas/arquivadas"
+            to="/cadastros"
           >
-            Arquivadas
+            Cadastros
           </Link>
         </div>
 
@@ -95,12 +95,12 @@ export const Header = () => {
           </div>
         </Link>
 
-        <Link to="/tarefas/arquivadas">
+        <Link to="/cadastros">
           <div
             onClick={() => setIsOpenMenu(!isOpenMenu)}
             className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3"
           >
-            Arquivadas
+            Cadastros
           </div>
         </Link>
       </div>
