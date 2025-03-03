@@ -1,66 +1,142 @@
-import { useEffect, useState } from "react";
+import { Menu, Search } from "lucide-react";
 import { Ecommerce } from "../../entities/Ecommerce";
 import { useEcommerce } from "../../hooks/useEcommerce";
-import { ValuesProduct } from "../../components/valuesProduct";
+import { formatInputCurrency } from "../../utils/validators";
+import { useCategory } from "../../hooks/useCategory";
+import { Category } from "../../entities/Category";
+import { Link } from "react-router-dom";
+
+type ArrayProductsCategory = Record<
+  number,
+  {
+    id: number;
+    title: string;
+    image: string;
+    price: number;
+    category: string;
+  }
+>;
 
 export const ECommerce = () => {
+  let arrayProductsCategory: ArrayProductsCategory = {};
   const { ecommerce } = useEcommerce();
-  const [showModal, setShowModal] = useState("hidden");
-  const [urlImage, setUrlImage] = useState("");
+  const { category } = useCategory();
+  let indexTest = 0;
+
+  const arrayCategorys: Category[] = category.filter((category) => category.id);
   const arrayProducts: Ecommerce[] = ecommerce.filter((product) => product.id);
 
-  useEffect(() => {
-    if (urlImage) setShowModal("");
-  }, [urlImage]);
+  arrayCategorys.map((category) => {
+    const arrayProduct: Ecommerce[] = ecommerce.filter(
+      (product) => product.category.name === category.name
+    );
+    arrayProduct.map((product) => {
+      if (indexTest < 4) {
+        arrayProductsCategory = {
+          ...arrayProductsCategory,
+          [product.id]: {
+            id: product.id,
+            title: product.title,
+            image: product.images[0],
+            price: product.price,
+            category: product.category.name,
+          },
+        };
+      }
+      indexTest++;
+    });
+    indexTest = 0;
+  });
 
   return (
-    <div className="block w-full py-12 text-white">
-      {arrayProducts.map((products) => (
-        <div
-          className="w-[85%] mx-auto bg-neutral-800 p-2 my-8 flex rounded-md"
-          key={products.id}
-        >
-          <div className="w-[15%] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 cursor-pointer">
-            <img
-              src={products.images[0]}
-              className="w-full object-cover rounded-md"
-              onClick={() => setUrlImage(products.images[0])}
-            />
-          </div>
-          <div className="w-[60%] text-white p-4">
-            <div className="text-gray-400 text-sm">
-              {products.category.name}
+    <div>
+      <div className="flex w-full justify-center items-center">
+        <img
+          src="/assets/banner-home-e-commerce.png"
+          className="rounded-md p-20 md:p-8"
+        />
+      </div>
+
+      <div className="flex w-full justify-center items-center">
+        <input
+          className="w-[34%] sm:w-[70%] h-12 rounded-l-full bg-faint_bg_gray text-white p-4 text-xl placeholder:text-gray-400 outline-none"
+          placeholder="Buscar produtos"
+        ></input>
+
+        <button className="w-[50px] h-12 rounded-r-full bg-faint_bg_gray text-white text-xl pr-5 flex justify-end items-center">
+          <Search color="oklch(0.707 0.022 261.325)" />
+        </button>
+
+        <Menu color="white" width={40} height={40} className="cursor-pointer" />
+      </div>
+      <div className="w-[88%] mx-auto mb-32">
+        {arrayCategorys.map((category) => (
+          <div key={category.id}>
+            <div className="flex text-4xl sm:text-2xl font-medium text-white py-12 sm:py-8">
+              {category.name}{" "}
+              {category.discount * 100 > 0 ? (
+                <div className="flex text-live_green text-sm items-end pl-2">
+                  {category.discount * 100 + "% OFF"}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
-            <div className="text-xl font-medium">{products.title}</div>
-            <div className="text-base">{products.description}</div>
+            <div className="flex w-[86%] sm:w-full mx-auto text-white justify-center sm:justify-start gap-20 sm:gap-4 overflow-auto">
+              {arrayProducts.map((products) =>
+                products.category.name === category.name &&
+                arrayProductsCategory[products.id] ? (
+                  <div
+                    className="w-[300px] sm:w-[138px] bg-faint_bg_gray block rounded-md relative sm:my-3"
+                    key={arrayProductsCategory[products.id].id}
+                  >
+                    <div className="w-[270px] sm:w-[130px] flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 m-4 sm:m-1">
+                      <img
+                        src={arrayProductsCategory[products.id].image}
+                        className="rounded-md"
+                      />
+                    </div>
+
+                    <div className="text-white pt-1 px-4 mb-12 w-[90%]">
+                      <div className="text-md sm:text-sm font-medium">
+                        {arrayProductsCategory[products.id].title}
+                      </div>
+                    </div>
+
+                    <div className="text-white w-full bg-red-50 absolute bottom-0">
+                      {category.discount > 0 ? (
+                        <div className="text-md absolute bottom-6 right-3 text-gray-400 line-through decoration-gray-200 decoration-1">
+                          {formatInputCurrency(
+                            arrayProductsCategory[products.id].price
+                          )}
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      <div className="text-lg font-medium absolute bottom-1 right-3">
+                        {formatInputCurrency(
+                          arrayProductsCategory[products.id].price -
+                            arrayProductsCategory[products.id].price *
+                              category.discount
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )
+              )}
+            </div>
+            <div className="w-full flex justify-center text-white pt-16 sm:pt-6 font-medium text-md">
+              {" "}
+              <Link to={`/e-commerce/categoria/${category.name}`}>
+                <div className="hover:underline cursor-pointer">
+                  Ver categoria
+                </div>
+              </Link>
+            </div>
           </div>
-          <div className="w-[25%] flex justify-center items-center">
-            <ValuesProduct
-              price={products.price}
-              category={products.category.name}
-            />
-          </div>
-          <hr />
-        </div>
-      ))}
-      <div
-        className={`${showModal} w-full h-full p-4 bg-black opacity-[0.8] z-[10000] top-0 left-0 fixed`}
-        onClick={() => setShowModal("hidden")}
-      ></div>
-      <div
-        className={`${showModal} bg-neutral-800 rounded-xl mx-auto w-[50%] h-[70%] z-[10001] fixed top-[15%] left-[25%] opacity-[1] overflow-y-auto overflow-x-hidden`}
-      >
-        <div className="w-full text-right p-2 px-4 text-2xl text-white">
-          <span
-            onClick={() => setShowModal("hidden")}
-            className="cursor-pointer"
-          >
-            X
-          </span>
-        </div>
-        <div className="flex justify-center items-center p-10">
-          <img src={urlImage} className="w-[450px]" />
-        </div>
+        ))}
       </div>
     </div>
   );

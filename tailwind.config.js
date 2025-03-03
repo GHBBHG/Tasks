@@ -28,7 +28,8 @@ export default {
     },
     extend: {
       colors: {
-        liveGreen: "#4FDC29",
+        live_green: "#4FDC29",
+        faint_bg_gray: "#29292E",
       },
     },
   },

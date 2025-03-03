@@ -45,7 +45,10 @@ export function CompletedTasksList() {
 
           <div className="flex justify-end">
             <UnarchiveTaskButton id={tasksArchives.id} />
-            <DeleteTaskButton id={tasksArchives.id} />
+            <DeleteTaskButton
+              id={tasksArchives.id}
+              name={tasksArchives.title}
+            />
           </div>
         </div>
       ))}

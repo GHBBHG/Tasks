@@ -10,8 +10,8 @@ export const Projects = () => {
     tasks?.filter((task) => task.projects === projeto) ?? [];
 
   return (
-    <div className="pb-96">
-      <div className="pl-40 pt-12 text-5xl font-medium text-slate-200">
+    <div className="pb-60">
+      <div className="pl-40 sm:pl-8 pt-12 text-5xl sm:text-3xl font-medium text-slate-200">
         {projeto} tarefas:
       </div>
       <div className="flex justify-end mx-auto w-[90%] my-10 ">
@@ -22,7 +22,7 @@ export const Projects = () => {
           Voltar
         </Link>
       </div>
-      <div className="flex flex-wrap gap-6 w-full min-h-60 mx-auto items-center justify-center">
+      <div className="flex flex-wrap gap-6 w-full sm:w-[90%] min-h-60 mx-auto items-center justify-center">
         {tasksProjects.map((tasksArchives) => (
           <div className="w-[480px] min-h-52 text-center rounded-lg mt-3 bg-sky-950 text-slate-100 h-">
             <div className="flex p-3 pb-0 rounded-t-lg font-medium bg-gray-800 justify-left">

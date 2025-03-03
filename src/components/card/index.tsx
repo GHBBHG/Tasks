@@ -17,7 +17,7 @@ interface CardProps {
 
 export function Card({ colorHeader, nameTask, tasks }: CardProps) {
   return (
-    <div className="mx-auto w-[31%] text-start items-center rounded-xl">
+    <div className="mx-auto w-full text-start items-center rounded-xl sm:mb-12">
       <p className={`${colorHeader} p-1 rounded-2xl font-medium`}>{nameTask}</p>
 
       {tasks.map((task) => (

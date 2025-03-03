@@ -4,6 +4,8 @@ import { z } from "zod";
 import { useTasks } from "../../hooks/useTasks";
 import { useProject } from "../../hooks/useProject";
 import { Projects } from "../../entities/Projects";
+import { PlusIcon, X } from "lucide-react";
+import { sucess } from "../../components/sweetAlert/sucess";
 
 const CreateTaskSchema = z.object({
   title: z.string(),
@@ -17,7 +19,6 @@ const CreateTaskSchema = z.object({
 
 export function Tasks() {
   const [showModal, setShowModal] = useState("hidden");
-  const [isHidden, setIsHidden] = useState("hidden");
   const { createTask } = useTasks();
   const { project } = useProject();
   const listProjects: Projects[] = project?.filter((a) => a.name != null) ?? [];
@@ -50,29 +51,35 @@ export function Tasks() {
     }));
   };
 
-  const reloadNewTask = () => {
-    location.reload();
-  };
+  const reloadNewTask = () => location.reload();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     const taskData = CreateTaskSchema.parse(formData);
     const response = await createTask(taskData);
     if (response != null) {
+      setShowModal("hidden");
       setTimeout(reloadNewTask, 1500);
-      setIsHidden("");
+      sucess.fire({
+        title: "Sua tarefa foi criada",
+        icon: "success",
+      });
     }
   };
 
   return (
     <>
-      <div className="pb-96">
-        <div className="pl-40 pt-10 pb-0 text-5xl font-medium text-slate-200">
+      <div className="pb-40">
+        <div className="pl-40 sm:pl-8 pt-10 pb-0 text-5xl font-medium text-slate-200">
           Tarefas
         </div>
         <div className="flex justify-end mx-auto w-[90%] mb-10 ">
-          <button className="text-5xl text-white" onClick={abrirModal}>
-            +
+          <button
+            title="Nova tarefa"
+            className="text-5xl text-white"
+            onClick={abrirModal}
+          >
+            <PlusIcon size={40} />
           </button>
         </div>
         <TasksList />
@@ -82,20 +89,15 @@ export function Tasks() {
         onClick={fecharModal}
       ></div>
       <div
-        className={`${showModal} bg-neutral-800 rounded-xl mx-auto w-[50%] h-[80%] z-[10001] fixed top-[10%] left-[25%] opacity-[1] overflow-y-auto overflow-x-hidden`}
+        className={`${showModal} bg-neutral-800 rounded-xl mx-auto w-[50%] sm:w-[90%] h-[80%] z-[10001] fixed top-[10%] left-[25%] sm:left-[5%] opacity-[1] overflow-y-auto overflow-x-hidden`}
       >
-        <div className="w-full text-right p-2 px-4 text-2xl text-white">
+        <div className="w-full flex justify-end p-2 text-2xl text-white">
           <span onClick={fecharModal} className="cursor-pointer">
-            X
+            <X size={30} />
           </span>
         </div>
-        <div className="text-4xl font-medium text-white w-full text-left mt-2 mb-8 mx-12">
+        <div className="text-4xl sm:text-2xl font-medium text-white w-full text-left mt-2 mb-8 ml-12 sm:ml-0 sm:text-center">
           Adicionar tarefa
-        </div>
-        <div
-          className={`${isHidden} bg-liveGreen text-white font-semibold w-[90%] p-2 my-2 mx-auto rounded-full`}
-        >
-          Tarefa criada com sucesso!
         </div>
         <div className="w-[90%] mx-auto">
           <form onSubmit={handleSubmit}>

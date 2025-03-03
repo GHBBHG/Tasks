@@ -1,16 +1,9 @@
+import { MenuIcon, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
-  const [toogleMenu, setToogleMenu] = useState("hidden");
-
-  const isOpenMenu = () => {
-    if (toogleMenu === "hidden") {
-      setToogleMenu("block");
-      return;
-    }
-    setToogleMenu("hidden");
-  };
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
     <>
@@ -52,35 +45,61 @@ export const Header = () => {
         </div>
 
         <div className="hidden sm:flex text-left justify-end text-5xl w-1/2 p-8">
-          <div onClick={isOpenMenu} className="cursor-pointer">
-            {toogleMenu === "hidden" ? "≡" : "x"}
+          <div
+            onClick={() => setIsOpenMenu(!isOpenMenu)}
+            className="cursor-pointer"
+          >
+            {isOpenMenu ? <X size={40} /> : <MenuIcon size={40} />}
           </div>
         </div>
       </div>
 
       <div
-        className={`${toogleMenu} relative w-full z-10 h-auto px-12 pb-3 font-medium bg-neutral-950 text-white`}
+        className={`${
+          isOpenMenu ? "block" : "hidden"
+        } relative w-full z-10 h-auto px-12 pb-3 font-medium bg-neutral-950 text-white`}
       >
         <Link to="/">
-          <div className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3">
+          <div
+            onClick={() => setIsOpenMenu(!isOpenMenu)}
+            className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3"
+          >
             Início
           </div>
         </Link>
 
+        <Link to="/e-commerce">
+          <div
+            onClick={() => setIsOpenMenu(!isOpenMenu)}
+            className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3"
+          >
+            Loja
+          </div>
+        </Link>
+
         <Link to="/tarefas/projetos">
-          <div className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3">
+          <div
+            onClick={() => setIsOpenMenu(!isOpenMenu)}
+            className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3"
+          >
             Projetos
           </div>
         </Link>
 
         <Link to="/tarefas">
-          <div className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3">
+          <div
+            onClick={() => setIsOpenMenu(!isOpenMenu)}
+            className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3"
+          >
             Tarefas
           </div>
         </Link>
 
         <Link to="/tarefas/arquivadas">
-          <div className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3">
+          <div
+            onClick={() => setIsOpenMenu(!isOpenMenu)}
+            className="border-gray-400 border-b hover:border-sky-300 hover:text-sky-300 duration-100 ease-in p-3"
+          >
             Arquivadas
           </div>
         </Link>

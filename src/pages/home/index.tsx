@@ -8,11 +8,11 @@ export function Home() {
           className="w-full object-cover opacity-[0.2] h-[705px]"
         />
 
-        <div className="absolute top-[15%] left-[10%] w-[80%] text-left text-6xl sm:text-3xl font-medium text-white">
+        <div className="absolute top-[15%] left-[10%] w-[80%] text-left text-6xl sm:text-2xl font-medium text-white">
           <h1>Dê um check na sua produtividade</h1>
         </div>
 
-        <div className="absolute top-[34%] sm:top-[25%] left-[20%] w-[60%] text-2xl sm:text-xl text-white text-justify">
+        <div className="absolute top-[34%] sm:top-[25%] left-[20%] w-[60%] text-2xl sm:text-base text-white text-justify">
           <p>
             Gerenciar tarefas em projetos pode ser um desafio, mas com
             organização tudo flui melhor. Divida grandes objetivos em pequenas
