@@ -41,6 +41,7 @@ export const Routes = createBrowserRouter([
         path: "/e-commerce/categoria/:categoria",
         element: <ECommerceCategory />,
       },
+
     ],
   },
 ]);
