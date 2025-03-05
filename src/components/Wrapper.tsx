@@ -14,7 +14,7 @@ export const Wrapper = () => {
           <ProjectContextProvider>
             <div className="flex flex-col items-center min-h-screen bg-zinc-900">
               <Header />
-              <div className="w-full">
+              <div className="w-full min-h-[700px]">
                 <Outlet />
               </div>
               <Footer />

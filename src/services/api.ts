@@ -79,6 +79,24 @@ export const ecommerceService = {
     const data: Ecommerce[] = await response.json();
     return data;
   },
+
+  async createEcommerce(attributes: Omit<Ecommerce, "id">): Promise<Ecommerce> {
+    const response = await fetch(import.meta.env.VITE_API_URL_ECOMMERCE, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(attributes),
+    });
+    const newEcommerce: Ecommerce = await response.json();
+    return newEcommerce;
+  },
+
+  async deleteEcommerce(id: string): Promise<void> {
+    await fetch(`${import.meta.env.VITE_API_URL_ECOMMERCE}/${id}`, {
+      method: "DELETE",
+    });
+  },
 };
 
 export const categoryService = {
@@ -98,5 +116,11 @@ export const categoryService = {
     });
     const newCategory: Category = await response.json();
     return newCategory;
+  },
+
+  async deleteCategory(id: string): Promise<void> {
+    await fetch(`${import.meta.env.VITE_API_URL_CATEGORY}/${id}`, {
+      method: "DELETE",
+    });
   },
 };

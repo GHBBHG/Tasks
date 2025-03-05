@@ -16,7 +16,7 @@ export const ValuesProduct = ({ price, categoria }: ValuesProductProps) => {
   );
 
   const valueDiscountCategory = (value: number) => {
-    const valueDiscount = value * arrayCategory[0].discount;
+    const valueDiscount = value * (arrayCategory[0].discount / 100);
     return formatInputCurrency(value - valueDiscount);
   };
 
@@ -25,7 +25,7 @@ export const ValuesProduct = ({ price, categoria }: ValuesProductProps) => {
       {arrayCategory[0].discount > 0 ? (
         <div>
           <div className="text-xs text-green-400 ">
-            {arrayCategory[0].discount * 100}% OFF
+            {arrayCategory[0].discount}% OFF
           </div>
           <div className="text-xl text-gray-400 line-through decoration-gray-200 decoration-2">
             {formatInputCurrency(price)}
@@ -44,12 +44,10 @@ export const ValuesProduct = ({ price, categoria }: ValuesProductProps) => {
         )}
       </div>
       <div className="flex mt-8 sm:mt-4 justify-center">
-
         <div
           className="text-4xl font-bold rounded-l-full w-12 h-12 flex items-center justify-center cursor-pointer bg-red-500 select-none"
           onClick={() => {
             if (quantityOfProduct > 0)
-
               setQuantityOfProduct(
                 (quantityOfProduct) => quantityOfProduct - 1
               );

@@ -24,7 +24,10 @@ export const Projects = () => {
       </div>
       <div className="flex flex-wrap gap-6 w-full sm:w-[90%] min-h-60 mx-auto items-center justify-center">
         {tasksProjects.map((tasksArchives) => (
-          <div className="w-[480px] min-h-52 text-center rounded-lg mt-3 bg-sky-950 text-slate-100 h-">
+          <div
+            key={tasksArchives.id}
+            className="w-[480px] min-h-52 text-center rounded-lg mt-3 bg-sky-950 text-slate-100 h-"
+          >
             <div className="flex p-3 pb-0 rounded-t-lg font-medium bg-gray-800 justify-left">
               {tasksArchives.title}
             </div>

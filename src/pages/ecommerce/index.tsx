@@ -1,9 +1,7 @@
 import { Menu, Search } from "lucide-react";
-import { Ecommerce } from "../../entities/Ecommerce";
 import { useEcommerce } from "../../hooks/useEcommerce";
 import { formatInputCurrency } from "../../utils/validators";
 import { useCategory } from "../../hooks/useCategory";
-import { Category } from "../../entities/Category";
 import { Link } from "react-router-dom";
 
 type ArrayProductsCategory = Record<
@@ -21,31 +19,27 @@ export const ECommerce = () => {
   let arrayProductsCategory: ArrayProductsCategory = {};
   const { ecommerce } = useEcommerce();
   const { category } = useCategory();
-  let indexTest = 0;
+  let i = 0;
 
-  const arrayCategorys: Category[] = category.filter((category) => category.id);
-  const arrayProducts: Ecommerce[] = ecommerce.filter((product) => product.id);
-
-  arrayCategorys.map((category) => {
-    const arrayProduct: Ecommerce[] = ecommerce.filter(
-      (product) => product.category.name === category.name
-    );
-    arrayProduct.map((product) => {
-      if (indexTest < 4) {
-        arrayProductsCategory = {
-          ...arrayProductsCategory,
-          [product.id]: {
-            id: product.id,
-            title: product.title,
-            image: product.images[0],
-            price: product.price,
-            category: product.category.name,
-          },
-        };
-      }
-      indexTest++;
-    });
-    indexTest = 0;
+  category.map((category) => {
+    ecommerce
+      .filter((product) => product.category.name === category.name)
+      .map((product) => {
+        if (i < 4) {
+          arrayProductsCategory = {
+            ...arrayProductsCategory,
+            [product.id]: {
+              id: product.id,
+              title: product.title,
+              image: product.images[0],
+              price: product.price,
+              category: product.category.name,
+            },
+          };
+        } else return;
+        i++;
+      });
+    i = 0;
   });
 
   return (
@@ -70,20 +64,20 @@ export const ECommerce = () => {
         <Menu color="white" width={40} height={40} className="cursor-pointer" />
       </div>
       <div className="w-[88%] mx-auto mb-32">
-        {arrayCategorys.map((category) => (
+        {category.map((category) => (
           <div key={category.id}>
             <div className="flex text-4xl sm:text-2xl font-medium text-white py-12 sm:py-8">
               {category.name}{" "}
-              {category.discount * 100 > 0 ? (
+              {category.discount > 0 ? (
                 <div className="flex text-live_green text-sm items-end pl-2">
-                  {category.discount * 100 + "% OFF"}
+                  {category.discount + "% OFF"}
                 </div>
               ) : (
                 ""
               )}
             </div>
             <div className="flex w-[86%] sm:w-full mx-auto text-white justify-center sm:justify-start gap-20 sm:gap-4 overflow-auto">
-              {arrayProducts.map((products) =>
+              {ecommerce.map((products) =>
                 products.category.name === category.name &&
                 arrayProductsCategory[products.id] ? (
                   <div
@@ -117,7 +111,7 @@ export const ECommerce = () => {
                         {formatInputCurrency(
                           arrayProductsCategory[products.id].price -
                             arrayProductsCategory[products.id].price *
-                              category.discount
+                              (category.discount / 100)
                         )}
                       </div>
                     </div>

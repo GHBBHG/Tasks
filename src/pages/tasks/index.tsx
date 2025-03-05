@@ -3,7 +3,6 @@ import { TasksList } from "../../components/tasksList";
 import { z } from "zod";
 import { useTasks } from "../../hooks/useTasks";
 import { useProject } from "../../hooks/useProject";
-import { Projects } from "../../entities/Projects";
 import { Archive, PlusIcon, X } from "lucide-react";
 import { sucess } from "../../components/sweetAlert/sucess";
 import { Link } from "react-router-dom";
@@ -22,15 +21,6 @@ export function Tasks() {
   const [showModal, setShowModal] = useState("hidden");
   const { createTask } = useTasks();
   const { project } = useProject();
-  const listProjects: Projects[] = project?.filter((a) => a.name != null) ?? [];
-
-  const abrirModal = () => {
-    setShowModal("");
-  };
-
-  const fecharModal = () => {
-    setShowModal("hidden");
-  };
 
   const [formData, setFormData] = useState({
     title: "",
@@ -83,7 +73,7 @@ export function Tasks() {
           <button
             title="Nova tarefa"
             className="text-5xl text-white"
-            onClick={abrirModal}
+            onClick={() => setShowModal("")}
           >
             <PlusIcon size={40} />
           </button>
@@ -92,13 +82,16 @@ export function Tasks() {
       </div>
       <div
         className={`${showModal} w-full h-full p-4 bg-black opacity-[0.8] z-[10000] top-0 left-0 fixed`}
-        onClick={fecharModal}
+        onClick={() => setShowModal("hidden")}
       ></div>
       <div
         className={`${showModal} bg-neutral-800 rounded-xl mx-auto w-[50%] sm:w-[90%] h-[80%] z-[10001] fixed top-[10%] left-[25%] sm:left-[5%] opacity-[1] overflow-y-auto overflow-x-hidden`}
       >
         <div className="w-full flex justify-end p-2 text-2xl text-white">
-          <span onClick={fecharModal} className="cursor-pointer">
+          <span
+            onClick={() => setShowModal("hidden")}
+            className="cursor-pointer"
+          >
             <X size={30} />
           </span>
         </div>
@@ -172,8 +165,10 @@ export function Tasks() {
               required
             >
               <option label=""></option>
-              {listProjects.map((project) => (
-                <option label={project.name}>{project.name}</option>
+              {project.map((project) => (
+                <option key={project.id} label={project.name}>
+                  {project.name}
+                </option>
               ))}
             </select>
             <br></br>

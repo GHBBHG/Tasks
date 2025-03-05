@@ -13,9 +13,7 @@ export const TasksByProjects = () => {
     name: z.string(),
   });
 
-  const handleChangeInput = (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((current) => ({
       ...current,

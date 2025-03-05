@@ -5,6 +5,7 @@ import { categoryService } from "../services/api";
 export interface CategoryContextData {
   category: Category[];
   createCategory: (attributes: Omit<Category, "id">) => Promise<void>;
+  deleteCategory: (id: string) => Promise<void>;
 }
 
 export const CategoryContext = createContext({} as CategoryContextData);
@@ -28,8 +29,17 @@ export const CategoryContextProvider: React.FC<
     return attributes;
   };
 
+  const deleteCategory = async (id: string) => {
+    await categoryService.deleteCategory(id);
+    setCategory((currentState) =>
+      currentState.filter((category) => category.id !== id)
+    );
+  };
+
   return (
-    <CategoryContext.Provider value={{ category, createCategory }}>
+    <CategoryContext.Provider
+      value={{ category, createCategory, deleteCategory }}
+    >
       {children}
     </CategoryContext.Provider>
   );

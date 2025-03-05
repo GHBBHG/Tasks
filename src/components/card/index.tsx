@@ -18,10 +18,15 @@ interface CardProps {
 export function Card({ colorHeader, nameTask, tasks }: CardProps) {
   return (
     <div className="mx-auto w-full text-start items-center rounded-xl sm:mb-12">
-      <p className={`${colorHeader} p-1 rounded-2xl font-medium`}>{nameTask}</p>
+      <p className={`${colorHeader} p-1.5 rounded-t-2xl font-medium`}>
+        {nameTask}
+      </p>
 
       {tasks.map((task) => (
-        <div className="text-center rounded-lg mt-3 bg-sky-950 text-slate-100">
+        <div
+          key={task.id}
+          className="text-center rounded-lg mt-3 bg-sky-950 text-slate-100"
+        >
           <div className="flex text-start p-3 rounded-t-lg font-medium bg-gray-800 justify-between">
             <div>
               {task.projects}: {task.title}
