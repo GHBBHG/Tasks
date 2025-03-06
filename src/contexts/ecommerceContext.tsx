@@ -4,6 +4,8 @@ import { ecommerceService } from "../services/api";
 
 export interface EcommerceContextData {
   ecommerce: Ecommerce[];
+  createEcommerce: (attributes: Omit<Ecommerce, "id">) => Promise<void>;
+  deleteEcommerce: (id: number) => Promise<void>;
 }
 
 export const EcommerceContext = createContext({} as EcommerceContextData);
@@ -21,8 +23,23 @@ export const EcommerceContextProvider: React.FC<
     ecommerceService.fetchEcommerce().then((data) => setEcommerce(data));
   }, []);
 
+  const createEcommerce: any = async (attributes: Omit<Ecommerce, "id">) => {
+    const newEcommerce = await ecommerceService.createEcommerce(attributes);
+    setEcommerce((currentState) => [...currentState, newEcommerce]);
+    return attributes;
+  };
+
+  const deleteEcommerce = async (id: number) => {
+    await ecommerceService.deleteEcommerce(id);
+    setEcommerce((currentState) =>
+      currentState.filter((ecommerce) => ecommerce.id !== id)
+    );
+  };
+
   return (
-    <EcommerceContext.Provider value={{ ecommerce }}>
+    <EcommerceContext.Provider
+      value={{ ecommerce, createEcommerce, deleteEcommerce }}
+    >
       {children}
     </EcommerceContext.Provider>
   );

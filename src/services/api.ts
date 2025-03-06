@@ -92,7 +92,7 @@ export const ecommerceService = {
     return newEcommerce;
   },
 
-  async deleteEcommerce(id: string): Promise<void> {
+  async deleteEcommerce(id: number): Promise<void> {
     await fetch(`${import.meta.env.VITE_API_URL_ECOMMERCE}/${id}`, {
       method: "DELETE",
     });

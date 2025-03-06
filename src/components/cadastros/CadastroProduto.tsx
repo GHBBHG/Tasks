@@ -1,74 +1,86 @@
-import { /*FormEventHandler,*/ useState } from "react";
-// import { z } from "zod";
+import { FormEventHandler, useState } from "react";
+import { z } from "zod";
 import { Modal } from "../Modal";
-import { Trash2 } from "lucide-react";
+import { Eye, Trash2 } from "lucide-react";
 import { useEcommerce } from "../../hooks/useEcommerce";
 import { formatInputCurrency } from "../../utils/validators";
-// import { sucess } from "../sweetAlert/sucess";
-// import { confirmarExcluir } from "../sweetAlert/confirmarExcluir";
+import { confirmarExcluir } from "../sweetAlert/confirmarExcluir";
+import { useCategory } from "../../hooks/useCategory";
+import { sucess } from "../sweetAlert/sucess";
 
 export const CadastroProduto = () => {
-  //   const { createCategory, category, deleteCategory } = useCategory();
-  const { ecommerce } = useEcommerce();
+  const { category } = useCategory();
+  const { ecommerce, deleteEcommerce, createEcommerce } = useEcommerce();
   const [showModalProdutos, setShowModalProdutos] = useState(false);
   const [showModalListProdutos, setShowModalListProdutos] = useState(false);
-  //   const [formData, setFormData] = useState({ name: "", discount: 0 });
-  //   const CreateCategoriaSchema = z.object({
-  //     name: z.string(),
-  //     discount: z.coerce.number(),
-  //   });
+  const [formData, setFormData] = useState({
+    title: "",
+    price: 0,
+    description: "",
+    category: "",
+    image: "",
+  });
+  const CreateProductSchema = z.object({
+    title: z.string(),
+    price: z.coerce.number(),
+    description: z.string(),
+    category: z.string(),
+    image: z.string(),
+  });
 
-  //   const reloadPage = () => location.reload();
+  const reloadPage = () => location.reload();
 
-  //   const handleChangeInput = (
-  //     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  //   ) => {
-  //     const { name, value } = e.target;
-  //     console.log(name, value);
-  //     setFormData((current) => ({
-  //       ...current,
-  //       [name]: value,
-  //     }));
-  //   };
+  const handleChangeInput = (
+    e: React.ChangeEvent<
+      HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  };
 
-  //   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
-  //     event.preventDefault();
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
+    event.preventDefault();
 
-  //     const categoriaDados = CreateCategoriaSchema.parse(formData);
-  //     const response = await createCategory(categoriaDados);
+    const produtoDados = CreateProductSchema.parse(formData);
+    const response = await createEcommerce(produtoDados);
 
-  //     if (response != null) {
-  //       setShowModalCategorias(false);
-  //       setTimeout(reloadPage, 1500);
-  //       sucess.fire({
-  //         title: "Sua categoria foi criada",
-  //         icon: "success",
-  //       });
-  //       return;
-  //     }
-  //   };
+    if (response != null) {
+      setShowModalProdutos(false);
+      setTimeout(reloadPage, 1500);
+      sucess.fire({
+        title: "Seu produto foi criado",
+        icon: "success",
+      });
+      return;
+    }
+  };
 
-  //   const handleDelete = (id: string, name: string) => {
-  //     setShowModalCategorias(false);
-  //     confirmarExcluir
-  //       .fire({
-  //         title: `Excluir a categoria "${name}" ?`,
-  //         icon: "warning",
-  //         showCancelButton: true,
-  //         confirmButtonText: "Sim, excluir!",
-  //         cancelButtonText: "Cancelar",
-  //         reverseButtons: true,
-  //       })
-  //       .then((result) => {
-  //         if (result.isConfirmed) {
-  //           deleteCategory(id);
-  //           confirmarExcluir.fire({
-  //             title: "Sua categoria foi excluída",
-  //             icon: "success",
-  //           });
-  //         }
-  //       });
-  //   };
+  const handleDelete = (id: number, name: string) => {
+    setShowModalProdutos(false);
+    confirmarExcluir
+      .fire({
+        title: `Excluir o produto "${name}" ?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sim, excluir!",
+        cancelButtonText: "Cancelar",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          deleteEcommerce(id);
+          confirmarExcluir.fire({
+            title: "Seu produto foi excluído",
+            icon: "success",
+          });
+        }
+      });
+  };
 
   return (
     <>
@@ -82,10 +94,10 @@ export const CadastroProduto = () => {
                 setShowModalListProdutos(true);
                 setShowModalProdutos(true);
               }}
-              title="Excluir produto"
-              className="bg-red-600 p-2 px-3 rounded-lg hover:bg-red-700"
+              title="Ver produtos"
+              className="bg-orange-600 p-2 px-3 rounded-lg hover:bg-orange-700"
             >
-              <Trash2 size={20} />
+              <Eye size={20} />
             </button>
           </div>
 
@@ -104,9 +116,8 @@ export const CadastroProduto = () => {
         <Modal closeModal={() => setShowModalProdutos(false)}>
           {!showModalListProdutos ? (
             <>
-              Em Produção
-              {/* <div className="text-4xl sm:text-2xl font-medium text-white w-full text-left mt-2 mb-8 ml-12 sm:ml-0 sm:text-center">
-                Adicionar categoria
+              <div className="text-4xl sm:text-2xl font-medium text-white w-full text-left mt-2 mb-8 ml-12 sm:ml-0 sm:text-center">
+                Adicionar produto
               </div>
               <div className="w-[90%] mx-auto">
                 <form onSubmit={handleSubmit}>
@@ -114,19 +125,52 @@ export const CadastroProduto = () => {
                   <br />
                   <textarea
                     className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
-                    name="name"
+                    name="title"
                     onChange={handleChangeInput}
                     required
                   ></textarea>
-                  <label className="text-white font-medium">Desconto: </label>
+                  <label className="text-white font-medium">Descrição: </label>
+                  <br />
+                  <textarea
+                    className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+                    name="description"
+                    onChange={handleChangeInput}
+                    required
+                  ></textarea>
+                  <label className="text-white font-medium">
+                    Url da imagem:{" "}
+                  </label>
+                  <br />
+                  <textarea
+                    className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+                    name="image"
+                    onChange={handleChangeInput}
+                    required
+                  ></textarea>
+                  <label className="text-white font-medium">Preço: </label>
                   <br />
                   <input
                     className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
-                    name="discount"
+                    name="price"
                     type="number"
                     onChange={handleChangeInput}
                     required
                   ></input>
+                  <label className="text-white font-medium">Categoria:</label>
+                  <br></br>
+                  <select
+                    name="category"
+                    onChange={handleChangeInput}
+                    className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+                    required
+                  >
+                    <option label=""></option>
+                    {category.map((categoria) => (
+                      <option key={categoria.id} label={categoria.name}>
+                        {categoria.id}
+                      </option>
+                    ))}
+                  </select>
                   <div className="text-right">
                     <button
                       className="border-2 rounded-md px-4 py-1 mt-4 text-white mb-8"
@@ -136,7 +180,7 @@ export const CadastroProduto = () => {
                     </button>
                   </div>
                 </form>
-              </div> */}
+              </div>
             </>
           ) : (
             <div className="m-10 bg-neutral-700 rounded-md p-4 max-h-[400px] h-[500px] overflow-y-auto text-white">
@@ -151,7 +195,13 @@ export const CadastroProduto = () => {
                 <div key={produto.id} className="font-light">
                   <div className="flex py-1.5">
                     <div className="w-[55%]">{produto.title}</div>
-                    <div className="w-[25%]">{produto.category.name}</div>
+                    <div className="w-[25%]">
+                      {
+                        category.find(
+                          (categoria) => categoria.id === produto.category
+                        )?.name
+                      }
+                    </div>
                     <div className="w-[10%] flex justify-center">
                       {formatInputCurrency(produto.price)}
                     </div>
@@ -159,10 +209,8 @@ export const CadastroProduto = () => {
                       <Trash2
                         size={20}
                         color="red"
-                        className="cursor-not-allowed"
-                        // onClick={() =>
-                        //   handleDelete(categoria.id, categoria.name)
-                        // }
+                        className="cursor-pointer"
+                        onClick={() => handleDelete(produto.id, produto.title)}
                       />
                     </div>
                   </div>

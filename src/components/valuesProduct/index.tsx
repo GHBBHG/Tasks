@@ -12,7 +12,7 @@ export const ValuesProduct = ({ price, categoria }: ValuesProductProps) => {
   const { category } = useCategory();
   const [quantityOfProduct, setQuantityOfProduct] = useState(0);
   const arrayCategory: Category[] = category.filter(
-    (category) => category.name === categoria
+    (category) => category.id === categoria
   );
 
   const valueDiscountCategory = (value: number) => {

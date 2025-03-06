@@ -3,14 +3,16 @@ import { Ecommerce } from "../../entities/Ecommerce";
 import { useEcommerce } from "../../hooks/useEcommerce";
 import { ValuesProduct } from "../../components/valuesProduct";
 import { useParams } from "react-router-dom";
+import { useCategory } from "../../hooks/useCategory";
 
 export const ECommerceCategory = () => {
   const { categoria } = useParams();
   const { ecommerce } = useEcommerce();
+  const { category } = useCategory();
   const [showModal, setShowModal] = useState("hidden");
   const [urlImage, setUrlImage] = useState("");
   const arrayProducts: Ecommerce[] = ecommerce.filter(
-    (product) => product.category.name === categoria
+    (product) => product.category === categoria
   );
 
   useEffect(() => {
@@ -20,7 +22,7 @@ export const ECommerceCategory = () => {
   return (
     <div className="block w-full py-12 text-white">
       <div className="px-20 py-12 sm:py-4 text-5xl sm:text-3xl font-medium">
-        {categoria}
+        {category.find((cat) => cat.id === categoria)?.name}
       </div>
       {arrayProducts.map((products) => (
         <div
@@ -29,9 +31,9 @@ export const ECommerceCategory = () => {
         >
           <div className="w-[15%] sm:w-full flex items-center justify-center bg-white rounded-lg border-2 border-gray-400 cursor-pointer">
             <img
-              src={products.images[0]}
+              src={products.image}
               className="w-full object-cover rounded-md"
-              onClick={() => setUrlImage(products.images[0])}
+              onClick={() => setUrlImage(products.image)}
             />
           </div>
           <div className="w-[60%] sm:w-full text-white p-4">
@@ -45,7 +47,7 @@ export const ECommerceCategory = () => {
           <div className="w-[25%] sm:w-full flex justify-center items-center">
             <ValuesProduct
               price={products.price}
-              categoria={products.category.name}
+              categoria={products.category}
             />
           </div>
         </div>

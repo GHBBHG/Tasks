@@ -3,9 +3,6 @@ export interface Ecommerce {
   title: string;
   price: number;
   description: string;
-  category: {
-    id: number;
-    name: string;
-  };
-  images: [string];
+  category: string;
+  image: string;
 }

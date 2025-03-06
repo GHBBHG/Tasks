@@ -2,7 +2,7 @@ import { FormEventHandler, useState } from "react";
 import { z } from "zod";
 import { useCategory } from "../../hooks/useCategory";
 import { Modal } from "../Modal";
-import { Trash2 } from "lucide-react";
+import { Eye, Trash2 } from "lucide-react";
 import { sucess } from "../sweetAlert/sucess";
 import { confirmarExcluir } from "../sweetAlert/confirmarExcluir";
 
@@ -22,7 +22,6 @@ export const CadastroCategoria = () => {
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setFormData((current) => ({
       ...current,
       [name]: value,
@@ -79,10 +78,10 @@ export const CadastroCategoria = () => {
                 setShowModalListCategorias(true);
                 setShowModalCategorias(true);
               }}
-              title="Excluir categoria"
-              className="bg-red-600 p-2 px-3 rounded-lg hover:bg-red-700"
+              title="Ver categorias"
+              className="bg-orange-600 p-2 px-3 rounded-lg hover:bg-orange-700"
             >
-              <Trash2 size={20} />
+              <Eye size={20} />
             </button>
           </div>
 

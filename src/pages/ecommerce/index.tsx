@@ -23,7 +23,7 @@ export const ECommerce = () => {
 
   category.map((category) => {
     ecommerce
-      .filter((product) => product.category.name === category.name)
+      .filter((product) => product.category === category.id)
       .map((product) => {
         if (i < 4) {
           arrayProductsCategory = {
@@ -31,9 +31,9 @@ export const ECommerce = () => {
             [product.id]: {
               id: product.id,
               title: product.title,
-              image: product.images[0],
+              image: product.image,
               price: product.price,
-              category: product.category.name,
+              category: product.category,
             },
           };
         } else return;
@@ -78,7 +78,7 @@ export const ECommerce = () => {
             </div>
             <div className="flex w-[86%] sm:w-full mx-auto text-white justify-center sm:justify-start gap-20 sm:gap-4 overflow-auto">
               {ecommerce.map((products) =>
-                products.category.name === category.name &&
+                category.id === products.category &&
                 arrayProductsCategory[products.id] ? (
                   <div
                     className="w-[300px] sm:w-[138px] bg-faint_bg_gray block rounded-md relative sm:my-3"
@@ -123,7 +123,7 @@ export const ECommerce = () => {
             </div>
             <div className="w-full flex justify-center text-white pt-16 sm:pt-6 font-medium text-md">
               {" "}
-              <Link to={`/e-commerce/categoria/${category.name}`}>
+              <Link to={`/e-commerce/categoria/${category.id}`}>
                 <div className="hover:underline cursor-pointer">
                   Ver categoria
                 </div>
