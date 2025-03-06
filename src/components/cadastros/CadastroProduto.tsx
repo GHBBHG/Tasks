@@ -7,6 +7,9 @@ import { formatInputCurrency } from "../../utils/validators";
 import { confirmarExcluir } from "../sweetAlert/confirmarExcluir";
 import { useCategory } from "../../hooks/useCategory";
 import { sucess } from "../sweetAlert/sucess";
+import { TextArea } from "../labels/TextArea";
+import { Select } from "../labels/Select";
+import { Input } from "../labels/Input";
 
 export const CadastroProduto = () => {
   const { category } = useCategory();
@@ -119,56 +122,46 @@ export const CadastroProduto = () => {
               </div>
               <div className="w-[90%] mx-auto">
                 <form onSubmit={handleSubmit}>
-                  <label className="text-white font-medium">Nome: </label>
-                  <br />
-                  <textarea
-                    className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+                  <TextArea
+                    label="Nome:"
                     name="title"
+                    required={true}
                     onChange={handleChangeInput}
-                    required
-                  ></textarea>
-                  <label className="text-white font-medium">Descrição: </label>
-                  <br />
-                  <textarea
-                    className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+                  />
+
+                  <TextArea
+                    label="Descrição:"
                     name="description"
+                    required={true}
                     onChange={handleChangeInput}
-                    required
-                  ></textarea>
-                  <label className="text-white font-medium">
-                    Url da imagem:{" "}
-                  </label>
-                  <br />
-                  <textarea
-                    className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+                  />
+
+                  <TextArea
+                    label="Url da imagem:"
                     name="image"
+                    required={true}
                     onChange={handleChangeInput}
-                    required
-                  ></textarea>
-                  <label className="text-white font-medium">Preço: </label>
-                  <br />
-                  <input
-                    className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+                  />
+
+                  <Input
+                    label="Preço:"
                     name="price"
                     type="number"
+                    required={true}
                     onChange={handleChangeInput}
-                    required
-                  ></input>
-                  <label className="text-white font-medium">Categoria:</label>
-                  <br></br>
-                  <select
+                  />
+
+                  <Select
+                    label="Categoria:"
                     name="category"
+                    required={true}
                     onChange={handleChangeInput}
-                    className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
-                    required
-                  >
-                    <option label=""></option>
-                    {category.map((categoria) => (
-                      <option key={categoria.id} label={categoria.name}>
-                        {categoria.id}
-                      </option>
-                    ))}
-                  </select>
+                    options={category.map((categoria) => ({
+                      label: categoria.name,
+                      title: categoria.id,
+                    }))}
+                  />
+
                   <div className="text-right">
                     <button
                       className="border-2 rounded-md px-4 py-1 mt-4 text-white mb-8"

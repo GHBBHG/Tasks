@@ -3,9 +3,12 @@ import { TasksList } from "../../components/tasksList";
 import { z } from "zod";
 import { useTasks } from "../../hooks/useTasks";
 import { useProject } from "../../hooks/useProject";
-import { Archive, PlusIcon, X } from "lucide-react";
+import { Archive, PlusIcon } from "lucide-react";
 import { sucess } from "../../components/sweetAlert/sucess";
 import { Link } from "react-router-dom";
+import { Modal } from "../../components/Modal";
+import { TextArea } from "../../components/labels/TextArea";
+import { Select } from "../../components/labels/Select";
 
 const CreateTaskSchema = z.object({
   title: z.string(),
@@ -18,9 +21,9 @@ const CreateTaskSchema = z.object({
 });
 
 export function Tasks() {
-  const [showModal, setShowModal] = useState("hidden");
   const { createTask } = useTasks();
   const { project } = useProject();
+  const [showModalTasks, setShowModalTasks] = useState(false);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -40,6 +43,7 @@ export function Tasks() {
       ...current,
       [name]: value,
     }));
+    console.log(formData);
   };
 
   const reloadNewTask = () => location.reload();
@@ -49,7 +53,7 @@ export function Tasks() {
     const taskData = CreateTaskSchema.parse(formData);
     const response = await createTask(taskData);
     if (response != null) {
-      setShowModal("hidden");
+      setShowModalTasks(false);
       setTimeout(reloadNewTask, 1500);
       sucess.fire({
         title: "Sua tarefa foi criada",
@@ -73,117 +77,108 @@ export function Tasks() {
           <button
             title="Nova tarefa"
             className="text-5xl text-white"
-            onClick={() => setShowModal("")}
+            onClick={() => setShowModalTasks(true)}
           >
             <PlusIcon size={40} />
           </button>
         </div>
         <TasksList />
       </div>
-      <div
-        className={`${showModal} w-full h-full p-4 bg-black opacity-[0.8] z-[10000] top-0 left-0 fixed`}
-        onClick={() => setShowModal("hidden")}
-      ></div>
-      <div
-        className={`${showModal} bg-neutral-800 rounded-xl mx-auto w-[50%] sm:w-[90%] h-[80%] z-[10001] fixed top-[10%] left-[25%] sm:left-[5%] opacity-[1] overflow-y-auto overflow-x-hidden`}
-      >
-        <div className="w-full flex justify-end p-2 text-2xl text-white">
-          <span
-            onClick={() => setShowModal("hidden")}
-            className="cursor-pointer"
-          >
-            <X size={30} />
-          </span>
-        </div>
-        <div className="text-4xl sm:text-2xl font-medium text-white w-full text-left mt-2 mb-8 ml-12 sm:ml-0 sm:text-center">
-          Adicionar tarefa
-        </div>
-        <div className="w-[90%] mx-auto">
-          <form onSubmit={handleSubmit}>
-            <label className="text-white font-medium">Título:</label>
-            <br></br>
-            <textarea
-              className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
-              name="title"
-              onChange={handleChangeInput}
-              required
-            ></textarea>
-            <br></br>
-            <label className="text-white font-medium">Descrição:</label>
-            <br></br>
-            <textarea
-              className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
-              name="description"
-              onChange={handleChangeInput}
-              required
-            ></textarea>
-            <br></br>
-            <label className="text-white font-medium">Branch:</label>
-            <br></br>
-            <textarea
-              className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
-              name="branch"
-              onChange={handleChangeInput}
-              required
-            ></textarea>
-            <br></br>
-            <label className="text-white font-medium">Status:</label>
-            <br></br>
-            <select
-              name="status"
-              onChange={handleChangeInput}
-              className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
-              required
-            >
-              <option label=""></option>
-              <option label="A fazer">todo</option>
-              <option label="Em progresso">doing</option>
-              <option label="Finalizado">done</option>
-            </select>
-            <br></br>
-            <label className="text-white font-medium">Prioridade:</label>
-            <br></br>
-            <select
-              name="priority"
-              onChange={handleChangeInput}
-              className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
-              required
-            >
-              <option label=""></option>
-              <option label="baixa">baixa</option>
-              <option label="media">media</option>
-              <option label="alta">alta</option>
-            </select>
-            <br></br>
+      {showModalTasks && (
+        <Modal closeModal={() => setShowModalTasks(false)}>
+          <div className="text-4xl sm:text-2xl font-medium text-white w-full text-left mt-2 mb-8 ml-12 sm:ml-0 sm:text-center">
+            Adicionar tarefa
+          </div>
+          <div className="w-[90%] mx-auto">
+            <form onSubmit={handleSubmit}>
+              <TextArea
+                label="Título:"
+                name="title"
+                required={true}
+                onChange={handleChangeInput}
+              />
 
-            <label className="text-white font-medium">Projeto:</label>
-            <br></br>
-            <select
-              name="projects"
-              onChange={handleChangeInput}
-              className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
-              required
-            >
-              <option label=""></option>
-              {project.map((project) => (
-                <option key={project.id} label={project.name}>
-                  {project.name}
-                </option>
-              ))}
-            </select>
-            <br></br>
-            <br></br>
-            <div className="text-end mb-8">
-              <button
-                className="border-2 rounded-md px-4 py-1 mr-4 text-white"
-                type="submit"
-              >
-                Salvar
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
+              <TextArea
+                label="Descrição:"
+                name="description"
+                required={true}
+                onChange={handleChangeInput}
+              />
+
+              <TextArea
+                label="Branch:"
+                name="branch"
+                required={true}
+                onChange={handleChangeInput}
+              />
+
+              <Select
+                label="Status:"
+                name="status"
+                required={true}
+                onChange={handleChangeInput}
+                options={[
+                  {
+                    label: "A fazer",
+                    title: "todo",
+                  },
+                  {
+                    label: "Em progresso",
+                    title: "doing",
+                  },
+                  {
+                    label: "Finalizado",
+                    title: "done",
+                  },
+                ]}
+              />
+
+              <Select
+                label="Prioridade:"
+                name="priority"
+                required={true}
+                onChange={handleChangeInput}
+                options={[
+                  {
+                    label: "baixa",
+                    title: "baixa",
+                  },
+                  {
+                    label: "media",
+                    title: "media",
+                  },
+                  {
+                    label: "alta",
+                    title: "alta",
+                  },
+                ]}
+              />
+
+              <Select
+                label="Projeto:"
+                name="projects"
+                required={true}
+                onChange={handleChangeInput}
+                options={project.map((project) => ({
+                  label: project.name,
+                  title: project.name,
+                }))}
+              />
+
+              <br />
+              <br />
+              <div className="text-end mb-8">
+                <button
+                  className="border-2 rounded-md px-4 py-1 mr-4 text-white"
+                  type="submit"
+                >
+                  Salvar
+                </button>
+              </div>
+            </form>
+          </div>
+        </Modal>
+      )}
     </>
   );
 }
