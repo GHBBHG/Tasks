@@ -36,7 +36,6 @@ export const CadastroProduto = () => {
     >
   ) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setFormData((current) => ({
       ...current,
       [name]: value,
@@ -90,7 +89,6 @@ export const CadastroProduto = () => {
           <div className="mr-2 mt-3">
             <button
               onClick={() => {
-                console.log("a");
                 setShowModalListProdutos(true);
                 setShowModalProdutos(true);
               }}
