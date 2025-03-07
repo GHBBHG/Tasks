@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
 import { CompletedTasksList } from "../../components/completedTasksList";
 import { ArchiveRestore } from "lucide-react";
+import { useTasks } from "../../hooks/useTasks";
 
 export const CompletedTasks = () => {
+  const { tasks } = useTasks();
+  const qtTasksArchived = tasks.filter((task) => task.archive === "1") ?? [];
+
   return (
     <div className="pb-20">
-      <div className="pl-40 sm:pl-8 pt-10 pb-0 text-5xl sm:text-3xl font-medium text-slate-200">
-        Tarefas Arquivadas
-      </div>
-      <div className="flex justify-end mx-auto w-[90%] mb-10">
+      <div className="flex justify-between mx-auto w-[80%] sm:w-[90%] mt-16 mb-2 items-center">
+        <div className="text-2xl font-medium text-white">
+          {qtTasksArchived.length} Tarefas arquivadas
+        </div>
         <Link to="/tarefas">
           <button title="Tarefas" className="text-5xl text-white">
             <ArchiveRestore size={32} />
