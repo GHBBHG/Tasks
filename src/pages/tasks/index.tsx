@@ -24,6 +24,7 @@ export function Tasks() {
   const { createTask } = useTasks();
   const { project } = useProject();
   const [showModalTasks, setShowModalTasks] = useState(false);
+  const [showModalLoading, setShowModalLoading] = useState(false);
 
   const selectStatus = [
     {
@@ -79,11 +80,13 @@ export function Tasks() {
   const reloadNewTask = () => location.reload();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
+    setShowModalTasks(false);
+    setShowModalLoading(true);
     event.preventDefault();
     const taskData = CreateTaskSchema.parse(formData);
     const response = await createTask(taskData);
     if (response != null) {
-      setShowModalTasks(false);
+      setShowModalLoading(false);
       setTimeout(reloadNewTask, 1500);
       sucess.fire({
         title: "Sua tarefa foi criada",
@@ -114,6 +117,11 @@ export function Tasks() {
         </div>
         <TasksList />
       </div>
+
+      {showModalLoading && (
+        <Modal closeModal={() => setShowModalTasks(false)} isLoading={true} />
+      )}
+
       {showModalTasks && (
         <Modal closeModal={() => setShowModalTasks(false)}>
           <div className="text-4xl sm:text-2xl font-medium text-white w-full text-left mt-2 mb-8 ml-12 sm:ml-0 sm:text-center">
