@@ -25,6 +25,36 @@ export function Tasks() {
   const { project } = useProject();
   const [showModalTasks, setShowModalTasks] = useState(false);
 
+  const selectStatus = [
+    {
+      label: "A fazer",
+      title: "todo",
+    },
+    {
+      label: "Em progresso",
+      title: "doing",
+    },
+    {
+      label: "Finalizado",
+      title: "done",
+    },
+  ];
+
+  const selectPrioridade = [
+    {
+      label: "baixa",
+      title: "baixa",
+    },
+    {
+      label: "media",
+      title: "media",
+    },
+    {
+      label: "alta",
+      title: "alta",
+    },
+  ];
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -117,20 +147,7 @@ export function Tasks() {
                 name="status"
                 required={true}
                 onChange={handleChangeInput}
-                options={[
-                  {
-                    label: "A fazer",
-                    title: "todo",
-                  },
-                  {
-                    label: "Em progresso",
-                    title: "doing",
-                  },
-                  {
-                    label: "Finalizado",
-                    title: "done",
-                  },
-                ]}
+                options={selectStatus}
               />
 
               <Select
@@ -138,20 +155,7 @@ export function Tasks() {
                 name="priority"
                 required={true}
                 onChange={handleChangeInput}
-                options={[
-                  {
-                    label: "baixa",
-                    title: "baixa",
-                  },
-                  {
-                    label: "media",
-                    title: "media",
-                  },
-                  {
-                    label: "alta",
-                    title: "alta",
-                  },
-                ]}
+                options={selectPrioridade}
               />
 
               <Select
@@ -165,11 +169,9 @@ export function Tasks() {
                 }))}
               />
 
-              <br />
-              <br />
-              <div className="text-end mb-8">
+              <div className="text-right">
                 <button
-                  className="border-2 rounded-md px-4 py-1 mr-4 text-white"
+                  className="border-2 rounded-md px-4 py-1 mt-4 text-white mb-8"
                   type="submit"
                 >
                   Salvar

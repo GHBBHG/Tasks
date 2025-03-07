@@ -5,6 +5,8 @@ import { Modal } from "../Modal";
 import { Eye, Trash2 } from "lucide-react";
 import { sucess } from "../sweetAlert/sucess";
 import { confirmarExcluir } from "../sweetAlert/confirmarExcluir";
+import { TextArea } from "../labels/TextArea";
+import { Input } from "../labels/Input";
 
 export const CadastroCategoria = () => {
   const { createCategory, category, deleteCategory } = useCategory();
@@ -105,23 +107,21 @@ export const CadastroCategoria = () => {
               </div>
               <div className="w-[90%] mx-auto">
                 <form onSubmit={handleSubmit}>
-                  <label className="text-white font-medium">Nome: </label>
-                  <br />
-                  <textarea
-                    className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+                  <TextArea
+                    label="Nome:"
                     name="name"
+                    required={true}
                     onChange={handleChangeInput}
-                    required
-                  ></textarea>
-                  <label className="text-white font-medium">Desconto: </label>
-                  <br />
-                  <input
-                    className="border-2 p-1 w-full h-10 bg-gray-700 rounded-md text-white"
+                  />
+
+                  <Input
+                    label="Desconto:"
                     name="discount"
                     type="number"
+                    required={true}
                     onChange={handleChangeInput}
-                    required
-                  ></input>
+                  />
+
                   <div className="text-right">
                     <button
                       className="border-2 rounded-md px-4 py-1 mt-4 text-white mb-8"
